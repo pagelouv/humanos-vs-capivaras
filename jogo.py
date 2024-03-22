@@ -82,6 +82,7 @@ def turnoInimigo():
             print(f"Sua vida: {personagemVida}")
             print(f"Vida inimiga: {inimigoVida}")
             print("")
+            input("Pressione para continuar...")
 
         elif personagemClasse == "2":                  # VERSÃO CAPIVARA:
             print("O humano tenta atirar em você!")
@@ -91,6 +92,7 @@ def turnoInimigo():
             print(f"Sua vida: {personagemVida}")
             print(f"Vida inimiga: {inimigoVida}")
             print("")
+            input("Pressione para continuar...")
     
     if ataqueInimigo >= 3 and ataqueInimigo <= 4:
         if personagemClasse == "1":
@@ -99,6 +101,7 @@ def turnoInimigo():
             print(f"Sua vida: {personagemVida}")
             print(f"Vida inimiga: {inimigoVida}")
             print("")
+            input("Pressione para continuar...")
 
         elif personagemClasse == "2":
             print("O humano tenta atirar em você!")
@@ -106,6 +109,7 @@ def turnoInimigo():
             print(f"Sua vida: {personagemVida}")
             print(f"Vida inimiga: {inimigoVida}")
             print("")
+            input("Pressione para continuar...")
     
     if ataqueInimigo == 5:
         if personagemClasse == "1":
@@ -115,6 +119,7 @@ def turnoInimigo():
             print(f"Sua vida: {personagemVida}")
             print(f"Vida inimiga: {inimigoVida}")
             print("")
+            input("Pressione para continuar...")
 
         if personagemClasse == "2":
             print("O humano é um Jedi!")
@@ -123,6 +128,8 @@ def turnoInimigo():
             print(f"Sua vida: {personagemVida}")
             print(f"Vida inimiga: {inimigoVida}")
             print("")
+            input("Pressione para continuar...")
+
 
 # ATACAR
 def atacar():
@@ -147,15 +154,15 @@ def atacar():
         inimigoVida = inimigoVida - dano
         print(f"Sua vida: {personagemVida}")
         print(f"Vida inimiga: {inimigoVida}")
-
-        turno = "1"
+        print("")
+        input("Pressione para continuar...")
     
     elif tiro >= 0 and tiro <= 10:
         print("Você errou!")
         print(f"Sua vida: {personagemVida}")
         print(f"Vida inimiga: {inimigoVida}")
-
-        turno = "1"
+        print("")
+        input("Pressione para continuar...")
 
     elif tiro == 20:
         print("Você critou! Dano crítico!")
@@ -170,8 +177,50 @@ def atacar():
         inimigoVida = inimigoVida - dano
         print(f"Sua vida: {personagemVida}")
         print(f"Vida inimiga: {inimigoVida}")
+        print("")
+        input("Pressione para continuar...")
 
-        turno = "1"
+# FUGIR
+def fugir():
+    os.system('cls')
+    if personagemClasse == "1":
+        print("Você tem certeza que quer fugir?")
+        i = input("1- Sim      2- Não")
+        print("")
+        if i == "1":
+            print("Sério mesmo que você vai fugir? É só uma capivara cara...")
+            print("")
+            x = input("1- Sim estou com muito medo de uma capivarinha...    2- Não")
+            print("")
+            if x == "1":
+                print("Sério mesmo? Eu nunca vi um humano tentando fugir com medo de uma capivara... Essa é nova")
+                print("")
+                y = input("1- Eu sou um covarde          2- Eu sou um covarde")
+                if y == "1":
+                    quit()
+                else:
+                    quit()
+            elif x == "2":
+                os.system('cls') 
+                batalhaHumano()
+            else:
+                os.system('cls') 
+                print("Não sabe nem digita")   
+                quit()
+        else:
+            os.system('cls') 
+            batalhaHumano()
+    
+    elif personagemClasse == "2":
+        print("Você tem certeza que quer fugir?")
+        i = input("1- Sim      2- Não")
+        print("")
+        if i == "1":
+            print("Tá tudo bem... humanos são malvados não tem problema fugir!")
+            quit()
+        
+        if i == "2":
+            batalhaCapivara()
 
 # BATALHA HUMANO CONTRA CAPIVARA:
 def batalhaHumano():
@@ -199,8 +248,9 @@ def batalhaHumano():
             else:
                 print("Opção inválida...")
 
+            turno = "1"
+
         if turno == "1":
-            print("")
             print("")
             print("")
             print("Turno inimigo!")
