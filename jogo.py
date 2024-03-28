@@ -9,9 +9,6 @@ turno = "0" # 0 = seu turno, 1 = turno inimigo
 pocaoCura =  1
 pocaoDano = 1
 danoExtra = "0"
-contarTurno = 0
-inimigoVida2 = 15
-verificarMorto = "1"
 
 # MENU: =================================================================================
 def menu():
@@ -19,7 +16,6 @@ def menu():
     resetGame()
 
     i = "0"
-    os.system('cls')
 
     while i != "2":
         print("-----------------------------------------------------------" )
@@ -31,8 +27,10 @@ def menu():
         print("(҂`_´)--------------------------------------^..^____/------" )
         print("<;︻╦╤─ *-*-*-*-*-*-*-*-*-*------------------\./ ___)------" )
         print("-----------------------------------------------||  || -----" )
-        print("           1- Jogar              2- Sair")
-        i = input()
+        print("------------------------------------------------------------")
+        
+        i = input("""\n           1- Jogar              2- Sair    
+                        """)
             
         if i == "1":
             startJogo()
@@ -52,48 +50,34 @@ def resetGame():
     global pocaoDano
     global pocaoCura
     global danoExtra 
-    global contarTurno
-    global inimigoVida2
-    global verificarMorto
 
     personagemClasse = "0" #0 = nenhuma, 1 = humano, 2 = capivara
     personagemVida = 10
-    inimigoVida = 1
-    inimigoVida2 = 15
+    inimigoVida = 10
     turno = "0" # 0 = seu turno, 1 = turno inimigo
     pocaoCura =  1
     pocaoDano = 1
     danoExtra = "0"
-    contarTurno = 0
-    verificarMorto = "1"
 
 # CHECAR GAME OVER: =================================================================================
 def gameOverCheck():
     global personagemVida
-    global contarTurno
 
     if personagemVida <= 0:
-        print("")
-        print("=======================")
         print("GAME OVER! VOCÊ PERDEU!")
-        print("=======================")
-        print("")
-        print(f"Você sobreviveu {contarTurno} turnos!")
-        print("")
-        input("Pressione para sair...")
-        quit()
 
 # SELECIONAR CLASSE DO PERSONAGEM: =================================================================================
 def selecionarClasse():
     global personagemClasse
-    print("""
-    Selecione sua classe:
-        1 - Humano      2 - Capivara
+    personagemClasse = input("""
+     -------------------CHOOSE YOUR DESTINY---------------------
+          
+                     1 - Humano      2 - Capivara
 
-    """)
-    personagemClasse = input()
+                                 """)
         
     if personagemClasse == "1":
+        os.system('cls')
         print("Você selecionou a classe Humano.")
 
     elif personagemClasse == "2":
@@ -119,18 +103,18 @@ def turnoInimigo():
 
     global personagemVida
     global personagemClasse
-    global inimigoVida
 
-    ataqueInimigo = random.randint(1, 20)
-    print("")
+    ataqueInimigo = random.randint(0, 19)
     print(f"d20 inimigo: {ataqueInimigo}")
-    print("")
 
-    if ataqueInimigo >= 10 and ataqueInimigo <= 19:    # SE O INIMIGO ACERTAR:
+    if ataqueInimigo >= 9 and ataqueInimigo <= 18:    # SE O INIMIGO ACERTAR:
         if personagemClasse == "1":                    # VERSÃO HUMANO:
             print("A Capivara tenta te atacar...")
             print("A Capivara te acerta!")
-            print("Você tomou 1 de dano!")
+            print("\n_/﹋\_")
+            print("(҂´.`")
+            print("<¨¨¨|")
+            print("\nVocê tomou 1 de dano!")
             personagemVida = personagemVida - 1
             print(f"Sua vida: {personagemVida}")
             print(f"Vida inimiga: {inimigoVida}")
@@ -138,10 +122,13 @@ def turnoInimigo():
             gameOverCheck()
             input("Pressione para continuar...")
 
-        elif personagemClasse == "2":                  # VERSÃO CAPIVARA:
+        if personagemClasse == "2":                  # VERSÃO CAPIVARA:
             print("O humano tenta atirar em você!")
             print("O humano te acerta!")
             print("Você tomou 1 de dano!")
+            print(" /\_/")  
+            print("( x.x )")
+            print(" > 0 <")
             personagemVida = personagemVida - 1
             print(f"Sua vida: {personagemVida}")
             print(f"Vida inimiga: {inimigoVida}")
@@ -149,26 +136,28 @@ def turnoInimigo():
             gameOverCheck()
             input("Pressione para continuar...")
     
-    if ataqueInimigo >= 0 and ataqueInimigo <= 9:
+    if ataqueInimigo >= 0 and ataqueInimigo <= 8:
         if personagemClasse == "1":
             print("A Capivara tenta te atacar...")
             print("Você dá uma cambalhota por cima do ataque dela! Ela erra!")
             print(f"Sua vida: {personagemVida}")
             print(f"Vida inimiga: {inimigoVida}")
-            print("")
             gameOverCheck()
             input("Pressione para continuar...")
 
-        elif personagemClasse == "2":
+        if personagemClasse == "2":
             print("O humano tenta atirar em você!")
             print("Com seu poder de Capivara Matrix você desvia!")
-            print(f"Sua vida: {personagemVida}")
+            print("\n /\_/")  
+            print("( `.´ )")
+            print(" > M <")
+            print(f"\nSua vida: {personagemVida}")
             print(f"Vida inimiga: {inimigoVida}")
             print("")
             gameOverCheck()
             input("Pressione para continuar...")
     
-    if ataqueInimigo == 20:
+    if ataqueInimigo == 19:
         if personagemClasse == "1":
             print("A Capivara lança um raio lazer em você!")
             print("Ela da um acerto crítico! -2 de vida!")
@@ -189,83 +178,9 @@ def turnoInimigo():
             gameOverCheck()
             input("Pressione para continuar...")
 
-# TURNO  SEGUNDO INIMIGO:  =================================================================================
-def turnoSegundoInimigo():
-
-    global personagemVida
-    global personagemClasse
-    global inimigoVida2
-
-    ataqueInimigo = random.randint(1, 20)
-    print("")
-    print(f"d20 inimigo: {ataqueInimigo}")
-    print("")
-
-    if ataqueInimigo >= 10 and ataqueInimigo <= 19:    # SE O SEGUNDO INIMIGO ACERTAR:
-        if personagemClasse == "1":                    # VERSÃO HUMANO:
-            print("A Capivara Mãe tenta te atacar...")
-            print("A Capivara te acerta!")
-            print("Você tomou 2 de dano!")
-            personagemVida = personagemVida - 2
-            print(f"Sua vida: {personagemVida}")
-            print(f"Vida inimiga: {inimigoVida2}")
-            print("")
-            gameOverCheck()
-            input("Pressione para continuar...")
-
-        elif personagemClasse == "2":                  # VERSÃO CAPIVARA:
-            print("O humano tenta atirar em você!")
-            print("O humano te acerta!")
-            print("Você tomou 1 de dano!")
-            personagemVida = personagemVida - 1
-            print(f"Sua vida: {personagemVida}")
-            print(f"Vida inimiga: {inimigoVida2}")
-            print("")
-            gameOverCheck()
-            input("Pressione para continuar...")
-    
-    if ataqueInimigo >= 0 and ataqueInimigo <= 9:
-        if personagemClasse == "1":
-            print("A Capivara Mãe tenta te atacar...")
-            print("Você dá uma cambalhota por cima do ataque dela! Ela erra!")
-            print(f"Sua vida: {personagemVida}")
-            print(f"Vida inimiga: {inimigoVida2}")
-            print("")
-            gameOverCheck()
-            input("Pressione para continuar...")
-
-        elif personagemClasse == "2":
-            print("O humano tenta atirar em você!")
-            print("Com seu poder de Capivara Matrix você desvia!")
-            print(f"Sua vida: {personagemVida}")
-            print(f"Vida inimiga: {inimigoVida2}")
-            print("")
-            gameOverCheck()
-            input("Pressione para continuar...")
-    
-    if ataqueInimigo == 20:
-        if personagemClasse == "1":
-            print("A Capivara Mãe lança um raio lazer em você!")
-            print("Ela da um acerto crítico! -4 de vida!")
-            personagemVida = personagemVida - 4
-            print(f"Sua vida: {personagemVida}")
-            print(f"Vida inimiga: {inimigoVida2}")
-            print("")
-            gameOverCheck()
-            input("Pressione para continuar...")
-
-        if personagemClasse == "2":
-            print("O humano é um Jedi!")
-            print("Ele usa a força para te prender na parede! Dano crítico! -2 de vida!")
-            personagemVida = personagemVida - 2
-            print(f"Sua vida: {personagemVida}")
-            print(f"Vida inimiga: {inimigoVida2}")
-            print("")
-            gameOverCheck()
-            input("Pressione para continuar...")
 
 # ATACAR:  =================================================================================
-def atacar(): # HUMANO ATACA CAPIVARA 1
+def atacar():
 
     global inimigoVida
     global turno
@@ -274,35 +189,34 @@ def atacar(): # HUMANO ATACA CAPIVARA 1
     os.system('cls') # LIMPA TELA
 
     input("Pressione para jogar o d20...")
-    print("")
     tiro = random.randint(0, 20) 
     print(f"Jogando dado d20: {tiro}")
-    print("")
 
     if tiro >= 11 and tiro <= 19:
         print("Você acerta!")
-        dano = random.randint(1, 3)
+        dano = random.randint(1, 2)
         print("Toma! Bem no alvo")
         print("_/﹋\_")
         print("(҂`_´")
         print("<;︻╦╤─") 
-        print("")
         print(f"Você deu {dano} de dano!")
         inimigoVida = inimigoVida - dano
         
     elif tiro >= 0 and tiro <= 10:
         print("Você errou!")
+        print("\n_/﹋\_")
+        print("(҂´.`")
+        print("<¨¨¨|")
 
     elif tiro == 20:
-        print("Você critou! Dano crítico!")
-        print("")
-        dano = 5
-        print("Toma! Headshot!")
+        print("Dano crítico!")
+
+        dano = 3
+        print("\nToma! Headshot!")
         print("_/﹋\_")
         print("(҂`_´")
         print("<;︻╦╤─") 
-        print("")
-        print(f"Você deu {dano} de dano! Insano!")
+        print(f"\nVocê deu {dano} de dano! Insano!")
         inimigoVida = inimigoVida - dano
     
     verificarDanoExtra()
@@ -314,56 +228,56 @@ def atacar(): # HUMANO ATACA CAPIVARA 1
 
     danoExtra = "0"
 
-# ATACAR SEGUNDO INIMIGO:  =================================================================================
-def atacarSegundoInimigo(): # HUMANO ATACA CAPIVARA MAE
+#ATAQUE DA CAPIVARA =======================================================================
+def ataque():
 
-    global inimigoVida2
+    global inimigoVida
     global turno
     global danoExtra
 
     os.system('cls') # LIMPA TELA
 
     input("Pressione para jogar o d20...")
-    print("")
     tiro = random.randint(0, 20) 
     print(f"Jogando dado d20: {tiro}")
-    print("")
 
     if tiro >= 11 and tiro <= 19:
         print("Você acerta!")
-        dano = random.randint(1, 3)
-        print("Toma! Bem no alvo")
-        print("_/﹋\_")
-        print("(҂`_´")
-        print("<;︻╦╤─") 
-        print("")
+        dano = random.randint(1, 2)
+        print("Mordida no braço")
+        print("\n /\_/")  
+        print("( `.´ )")
+        print(" > M <") 
         print(f"Você deu {dano} de dano!")
-        inimigoVida2 = inimigoVida2 - dano
+        inimigoVida = inimigoVida - dano
+    
         
     elif tiro >= 0 and tiro <= 10:
         print("Você errou!")
+        print("\n /\_/")  
+        print("( x.x )")
+        print(" > w <") 
+       
 
     elif tiro == 20:
-        print("Você critou! Dano crítico!")
-        print("")
-        dano = 5
-        print("Toma! Headshot!")
-        print("_/﹋\_")
-        print("(҂`_´")
-        print("<;︻╦╤─") 
-        print("")
-        print(f"Você deu {dano} de dano! Insano!")
-        inimigoVida2 = inimigoVida2 - dano
+        print("Dano crítico!")
+
+        dano = 3
+        print("\nMordida no Pescoço!")
+        print("\n /\_/")  
+        print("( `.´ )")
+        print(" > M <") 
+        print(f"\nVocê deu {dano} de dano! Insano!")
+        inimigoVida = inimigoVida - dano
     
     verificarDanoExtra()
 
     print(f"Sua vida: {personagemVida}")
-    print(f"Vida inimiga: {inimigoVida2}")
+    print(f"Vida inimiga: {inimigoVida}")
     print("")
     input("Pressione para continuar...")
 
     danoExtra = "0"
-
 # FUGIR:  ==================================================================================================
 def fugir():
     os.system('cls')
@@ -389,7 +303,7 @@ def fugir():
                 batalhaHumano()
             else:
                 os.system('cls') 
-                print("Não sabe nem digitar!")   
+                print("Não sabe nem digita")   
                 quit()
         else:
             os.system('cls') 
@@ -403,7 +317,7 @@ def fugir():
             print("Tá tudo bem... humanos são malvados não tem problema fugir!")
             quit()
         
-        elif i == "2":
+        if i == "2":
             batalhaCapivara()
 
 # USAR ITEM: =============================================================================================
@@ -416,43 +330,33 @@ def usarItem():
 
     os.system('cls')
     print("=============== INVENTÁRIO ===============")
-    print("")
     print(f"1- Paçoca Encantada (+2HP): {pocaoCura}")
     print(f"2- Chumbinho de Festa Junina (+2 Dano Garantido): {pocaoDano}")
-    print("3- Voltar...")
-    print("")
-    print("==========================================")
+
     print("")
     print("Selecione uma opção...")
     i = input()
 
-    if i == "1" and pocaoCura >= 1:
+    if i == "1" and pocaoCura == 1:
         print("Você usou uma Poção de Cura!")
         personagemVida = personagemVida + 2
         pocaoCura = pocaoCura - 1
+
         print(f"Sua vida agora é: {personagemVida} HP")
-        input("Pressione para continuar...")
     
     elif i == "1" and pocaoCura == 0:
         print("Você não possui mais deste item!")
         input("Pressione para continuar...")
         usarItem()
 
-    elif i == "2" and pocaoDano >= 1:
+    elif i == "2" and pocaoDano == 1:
         print("Você usou um item de dano extra! Será aplicado o dano no seu próximo turno!")
-        input("Pressione para continuar...")
         danoExtra = "1"
         pocaoDano = pocaoDano - 1
     
     elif i == "2" and pocaoDano == 0:
         print("Você não possui mais deste item!")
         input("Pressione para continuar...")
-        usarItem()
-    
-    elif i == "3":
-        batalhaHumano()
-
-    else:
         usarItem()
 
 
@@ -461,16 +365,11 @@ def verificarDanoExtra():
 
     global danoExtra
     global inimigoVida
-    global inimigoVida2
 
-    if danoExtra == "1" and inimigoVida > 0:
+    if danoExtra == "1":
         print("Você deu Dano Extra! O Inimigo toma 2 de dano!")
         inimigoVida = inimigoVida - 2
-    
-    elif danoExtra == "1" and inimigoVida <= 0 and inimigoVida2 > 0:
-        print("Você deu Dano Extra! O Inimigo toma 2 de dano!")
-        inimigoVida2 = inimigoVida2 - 2
- 
+
 
 # BATALHA HUMANO CONTRA CAPIVARA: =================================================================================
 def batalhaHumano():
@@ -478,19 +377,10 @@ def batalhaHumano():
     global turno
     global personagemVida
     global inimigoVida
-    global inimigoVida2
-    global contarTurno
-    global pocaoCura
-    global pocaoDano
-    global verificarMorto
 
     while personagemVida > 0 and inimigoVida > 0:
-
-        os.system('cls')
-
+            
         if turno == "0":
-            print(f"Sua vida: {personagemVida}     Vida inimiga: {inimigoVida}")
-            print("")
             print("Você encontra uma Capivara Selvagem, o que você faz?")
             jogadorEscolha = "0"
             jogadorEscolha = opcaoBatalha()
@@ -501,7 +391,6 @@ def batalhaHumano():
             
             elif jogadorEscolha == "2":
                 usarItem()
-                batalhaHumano()
             
             elif jogadorEscolha == "3":
                 fugir()
@@ -512,88 +401,48 @@ def batalhaHumano():
 
             turno = "1"
 
-        if turno == "1" and inimigoVida > 0:
+        if turno == "1":
+            print("\n\nTurno inimigo!")
             print("")
-            print("==============")
-            print("Turno inimigo!")
-            print("==============")
             turnoInimigo()
             turno = "0"
-        
-        contarTurno = contarTurno + 1
-    
-    # JOGADOR DERROTA PRIMEIRO INIMIGO, SEGUNDO INIMIGO:
-    if inimigoVida <= 0 and verificarMorto == "1":
-        os.system('cls')
-        print("")
-        print("Parabéns! Você derrotou a capivara bebê!")
-        print("")
-        print("========== LOOT ==========")     # JOGADOR RECEBE LOOT
-        print("")
-        print("+2 Paçocas Encantadas!")
-        print("+1 Chumbinho de Festa Junina!")
-        print("")
-        print("==========================")
-        pocaoCura = pocaoCura + 2
-        pocaoDano = pocaoDano + 1
 
-        print("")
-        input("...")
-        print("")
-        print("A Capivara bebê chora por sua mãe!")
-        input("...")
-        print("")
-        print("A Capivara Mãe vê você atacando a filha dela!")
-        input("...")
-        print("")
-        print("A Capivara Mãe se junta a batalha!")
-        input("...")
-        print("")
+def batalhaCapivara():
 
-        verificarMorto = "0"
 
-    turno = "0"     # TURNO VIRA DO JOGADOR
+    global turno
+    global personagemVida
+    global inimigoVida
 
-    while personagemVida > 0 and inimigoVida <= 0 and inimigoVida2 > 0:      # BATALHA JOGADOR CONTRA SEGUNDO INIMIGO:
-        os.system('cls')
-
+    while personagemVida > 0 and inimigoVida > 0:
+            
         if turno == "0":
-            print(f"Sua vida: {personagemVida}     Vida inimiga: {inimigoVida2}")
-            print("")
-            print("Você se depara com a Capivara Mãe, o que você faz?")
+            print("\nVocê encontra um humano armado, o que você faz?")
             jogadorEscolha = "0"
             jogadorEscolha = opcaoBatalha()
-            print(f"A escolha do jogador foi {jogadorEscolha}")
+            print(f"\nSua escolha foi:  {jogadorEscolha}")
 
             if jogadorEscolha == "1":
-                atacarSegundoInimigo()
+                ataque()
             
             elif jogadorEscolha == "2":
                 usarItem()
-                batalhaHumano()
             
             elif jogadorEscolha == "3":
                 fugir()
             
             else:
                 print("Opção inválida...")
-                batalhaHumano()
+                batalhaCapivara()
 
             turno = "1"
 
-        if turno == "1" and inimigoVida2 > 0:
+        if turno == "1":
+            print("\n\nTurno inimigo!")
             print("")
-            print("==============")
-            print("Turno inimigo!")
-            print("==============")
-            turnoSegundoInimigo()
+            turnoInimigo()
             turno = "0"
-        
-        contarTurno = contarTurno + 1
 
-
-    
-    print(f"Total de turnos: {contarTurno}")
 
 # COMEÇAR O JOGO: =================================================================================
 def startJogo():
