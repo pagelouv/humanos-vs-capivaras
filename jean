@@ -1,5 +1,7 @@
 import random
 import os
+import sys
+import time
 
 # VARIÁVEIS GLOBAIS: =================================================================================
 
@@ -13,6 +15,13 @@ danoExtra = "0"
 contarTurno = 0
 inimigoVida2 = 25
 verificarMorto = "1"
+RED = '\033[91m'
+RESET = '\033[0m'
+YELLOW = '\033[93m'
+GREEN = '\033[92m'
+BLUE = '\033[94m'
+BLACK = "\033[1;30m"
+WHITE = "\033[1;37m"
 
 # MENU: =================================================================================
 def menu():
@@ -26,31 +35,81 @@ def menu():
         
      
         
-        print("""\n\n
- ___________________________________________________________ 
-|-----------------------------------------------------------|
-|-----------------------------------------------------------|
-|-----------------------------------------------------------|
-|-----------------------------------------------------------|
-|---------------------HUMAN  X  CAPIVARA--------------------|
-|--_/﹋\_---------------------------------------------------|
-|--(҂`_´)--------------------------------------^..^____/----|
-|--<;︻╦╤─ *-*-*-*-*-*-*-*-*-*------------------\./ ___)----|
-|-------------------------------------------------||  || ---|""")
+        print(RED +"""
+     __                                                    ___ ___  _______                        __                                   
+    |  |--..--.--..--------..---.-..-----..-----..-----.  |   Y   ||   _   |  .----..---.-..-----.|__|.--.--..---.-..----..---.-..-----.
+    |     ||  |  ||        ||  _  ||     ||  _  ||__ --|  |.  |   ||   1___|  |  __||  _  ||  _  ||  ||  |  ||  _  ||   _||  _  ||__ --|
+    |__|__||_____||__|__|__||___._||__|__||_____||_____|  |.  |   ||____   |  |____||___._||   __||__| \___/ |___._||__|  |___._||_____|
+                                                          |:  1   ||:  1   |               |__|                                         
+                                                           \:.. ./ |::.. . |                                                            
+                                                            `---'  `-------' """+ RESET)
+        
+        print("""
+                                  ____________________________________________________________________
+                                  |###################################################################|            
+                                  |###################################################################|
+                                  |###|-----------------------------------------------------------|###|
+                                  |###|-----------------------------------------------------------|###|
+                                  |###|--_/﹋\_-------------------------------------- /\_/ -------|###|
+                                  |###|--(҂`_´)--------------------------------------( `.´ )------|###|
+                                  |###|--<;︻╦╤─ *-*-*-*-*-*-*-*-*-*------------------\ m /-------|###|
+                                  |###|------------------------------------------------\./--------|###|
+                                  |###|-----------------------------------------------------------|###|
+                                  |###|                                                           |###|
+                                  |###|-----------------------------------------------------------|###|
+                                  |###################################################################|
+                                  |###########                                           #############|
+                                  |                1 - JOGAR  2 - INSTRUÇÕES  3 - SAIR                |
+                                  |___________________________________________________________________|""")
        
 
 
-        i = input("""\n           1- Jogar              2- Sair    
-                        """)
+        i = input("\n                                                                  ")
 
         if i == "1":
+            os.system('cls')
+            print("""\n
+ __| |________________________________________________________________________________________________________________________| |__
+(__   ________________________________________________________________________________________________________________________   __)
+   | |                                                                                                                        | |
+""")
+            ler_texto()
+            print("""
+ __| |________________________________________________________________________________________________________________________| |__
+(__   ________________________________________________________________________________________________________________________   __)
+   | |                                                                                                                        | |
+""")
+            input("...")
             startJogo()
+            
 
         elif i == "2":
             print("Saindo do jogo...")
 
         else:
             print("Comando inválido")
+
+def ler_texto():
+    texto = RED +"""
+        Numa manhã ensolarada numa pequena cidade às margens de um rio, um estranho acontecimento começou a se desenrolar.
+
+        Um grupo de capivaras, decidiu tomar posse das terras próximas ao rio, que há muito tempo pertenciam aos moradores
+
+        Os moradores, inicialmente surpresos com a audácia das capivaras, logo se viram em uma batalha inesperada
+        pela terra. 
+        Armados com enxadas e qualquer coisa que pudessem encontrar, os moradores se prepararam para defender o que era deles.
+
+        As capivaras, com suas afiadas garras e dentes, estavam determinadas a manter o que consideravam seu território agora.
+
+        
+                                             DE QUAL LADO VOCÊ VAI FICAR?? 
+""" + RESET
+    for letra in texto:
+        sys.stdout.write(letra)
+        sys.stdout.flush()
+        time.sleep(0.05)
+
+    print()
 
 # RESETAR JOGO: =================================================================================
 def resetGame():
@@ -111,64 +170,85 @@ def gameOverCheck():
             input("Pressione para sair...")
             quit()
 
-
-
-
-   
-
 # SELECIONAR CLASSE DO PERSONAGEM: =================================================================================
 def selecionarClasse():
+    
     global personagemClasse
-   
-    personagemClasse = input("""
-     -------------------CHOOSE YOUR DESTINY---------------------
-          
-                     1 - Humano      2 - Capivara
 
-                                 """)
+    print(YELLOW +"""
+ ____ __  __  _____   _____    __ _____    _  _  _____  __ __ _____    _____ _____   __ _____ __ __  __ _  _ 
+((    ||==|| ((   )) ((   ))  ((  ||==      \// ((   )) || || ||_//    ||  ) ||==   ((   ||   || ||\ ||  \// 
+ .\__ ||  ||   \_//    \_//  \_)) ||___  _  //    \_//   \_// || \   _ ||_// ||___ \_))  ||   || || \||  //  
+
+""" + RESET)
+
+    print("""
+        ╔═════════════════════════════╗    __                ___    ╔═════════════════════════════╗  
+        ║                             ║   /_ |              |__ \   ║                             ║
+        ║==========\///////\          ║    | |     _____       ) |  ║============|\_/|=           ║
+        ║          | _   _ |          ║    | |    |_____|     / /   ║##########=( o"O )=          ║
+        ║=========( (o) (o) )=========║    | |               / /_   ║===========/\ " /\===========║
+        ║          |  . .  |          ║    |_|              |____|  ║         =| |\_/| |=#########║
+        ║           \  _  /===========║                             ║         =\_>---<_/==========║
+        ║            \___/            ║                             ║          (___|___)          ║
+        ╚═════════════════════════════╝                             ╚═════════════════════════════╝ 
+                    HUMANO                                                      CAPIVARA
+""")
+
+    
+   
+    personagemClasse = input("                                                ")
 
     if personagemClasse == "1":
-        print("Você é um humano que sai a caça de qualquer coisa que se mecher!!!.")
-        print("""
-                       ______
-                    <((((((\.\.
-                    /      . }\.
-                    ;--..--._|}
-(.\                 '--/\--'  )
- \.\                | '-'  :'|
-  \.\               . -==- .-|
-   \.\               \.__.'   \--._
-   [\.\          __.--|       //  _/'--.
-   \ \.\       .'-._ ('-----'/ __/      \.
-    \ \.\     /   __>|      | '--.       |
-     \ \.\   |   \   |     /    /       /
-      \ '\ /     \  |     |  _/       /
-       \  \       \ |     | /        /
-        \  \      \        /
-""")
+        os.system('cls')
+        print(GREEN +"""
+                     ╔═════════════════════════════════════════════════╗
+                     ║[0]                     ______                [0]║═══════════════════════════════════════════════════════╗
+                     ║ |                     <((((((\.\.             | ║  =====================================================║
+                     ║ |                     /      . }\.            | ║   .__                                        =========║    
+                     ║ |                     ;--..--._|}             | ║   |  |__   __ __   _____  _____     ____    ____ =====║
+                     ║ | (.\                 '--/\--'  )             | ║   |  |  \ |  |  \ /     \ \__  \   /    \  /  _ \.====║
+                     ║ |  \.\                | '-'  :'|              | ║   |   Y  \|  |  /|  Y Y  \ / __ \_|   |  \(  <_> )====║
+                     ║ |   \.\               . -==- .-|              | ║   |___|  /|____/ |__|_|  /(____  /|___|  / \____/=====║
+                     ║ |    \.\               \.__.'   \--._         | ║        \/              \/      \/      \/ ============║      
+                     ║ |    [\.\          __.--|       //  _/'--.    | ║ ======================================================║
+                     ║ |    \ \.\       .'-._ ('-----'/ __/      \.  | ║═══════════════════════════════════════════════════════╝ 
+                     ║ |     \ \.\     /   __>|      | '--.       |  | ║          ║ |       
+                     ║ |      \ \.\   /   \   |     /    /       /   | ║          ║ | VIDA : ▄▄▄▄▄▄▄▄▄▄▄
+                     ║ |        \ '\ /     \  |     |  _/       /    | ║          ║ | FORÇA: ▄▄▄▄▄▄▄▄▄▄
+                     ║ |         \  \       \ |     | /        /     | ║          ║ | ARMAS: ▄▄▄▄▄▄▄▄▄▄       ____  
+                     ║ |          \  \       \        /              | ║          ╚══════════════════════════|____|
+                     ║[0]                                           [0]║                                     
+                     ╚═════════════════════════════════════════════════╝ 
+              """ + RESET)
         input()
 
     elif personagemClasse == "2":
-        print("Você é uma linda capivara que encontra um humano FDP Armado.")
-        print("""      
-              ___
-          .="   "=._.---.                 
-        ."         c ` Y´`p
-       /   ,       `.  m_/
-       |   '-.   /     / 
- _,..._|      )_-\ \_=.\.
-`------'`------)))`=-'"`'"
-
-
-""")
+        os.system('cls')
+        print(YELLOW +"""      
+                     ╔════════════════════════════════════╗
+                     ║[0]                              [0]║
+                     ║ |                                | ║════════════════════════════════════════════════════════════════╗  
+                     ║ |                                | ║  =========================.__    ==============================║  
+                     ║ |                                | ║     ____  _____   ______  |__|___  _______   _______ _____     ║
+                     ║ |             ___                | ║   _/ ___\ \__  \  \____ \ |  |\  \/ /\__  \  \_  __ \.__  \.   ║
+                     ║ |          .="   "=._.---.       | ║   \  \___  / __ \_|  |_> >|  | \   /  / __ \_ |  | \/ / __ \_  ║
+                     ║ |        ."         c ` Y´`p     | ║    \___  >(____  /|   __/ |__|  \_/  (____  / |__|   (____  /  ║
+                     ║ |       /   ,       `. \m/       | ║        \/      \/ |__|                    \/              \/   ║
+                     ║ |      |   '-.   /     /         | ║ ===============================================================║
+                     ║ |     _|      )_-\ \_=.\         | ║════════════════════════════════════════════════════════════════╝ 
+                     ║ |   .-'`------)))`=-'"`'"        | ║                  ║ |
+                     ║ |                                | ║                  ║ | VIDA : ▄▄▄▄▄▄▄▄▄▄
+                     ║[0]                              [0]║                  ║ | FORÇA: ▄▄▄▄▄▄▄▄▄
+                     ╚════════════════════════════════════╝                  ║ | GARRA: ▄▄▄▄▄▄▄▄         ____ 
+                                                                             ╚══════════════════════════|____|
+""" + RESET)
         input()
 
 # ESCOLHER OPÇÃO BATALHA: =================================================================================
 def opcaoBatalha():
     
-    i = input("""
-1 - ATACAR      2 - USAR ITEM       3 - FUGIR
-                     """)
+    i = input("                                                   ")
 
     if i == "1" or i == "2" or i == "3":
         return i
@@ -188,92 +268,81 @@ def turnoInimigo():
     ataqueInimigo = random.randint(1, 20)
 
     if ataqueInimigo >= 10 and ataqueInimigo <= 19:    # SE O INIMIGO ACERTAR:
-        if personagemClasse == "1":                    # VERSÃO HUMANO:
-            print("\nA Capivara tenta te atacar...")
-            print("A Capivara te acerta!")
+
+        
+        if personagemClasse == "1":
+                                # VERSÃO HUMANO:
+            print("COICE DE CAPIVARA!")
             print("\n /\_/.")  
-            print("( `.´ )  -->TOME!")
+            print("( `.´ )  --> TOME!")
             print(" \ w /")
             print("  \./")
-            print("Você tomou 1 de dano!")
+            print("\nVocê tomou 1 de dano!")
             personagemVida = personagemVida - 1
-            print(f"Sua vida: {personagemVida}")
+            print(f"\nSua vida: {personagemVida}")
             print(f"Vida inimiga: {inimigoVida}")
-            print("")
-            gameOverCheck()
-            vencedor()
-            input("Pressione para continuar...")
+            input("\nPressione para continuar...")
 
         elif personagemClasse == "2":                  # VERSÃO CAPIVARA:
-            print("\nO humano tenta atirar em você!")
-            print("O humano te acerta!")
+            print("\nTIRO DE RIFLE!")
             print("\n_/﹋\_")
             print("(҂`_´    -->VAI VIRAR BIFE")
             print("<;︻╦╤─") 
-            print("Você tomou 1 de dano!")
+            print("\nVocê tomou 1 de dano!")
             personagemVida = personagemVida - 1
-            print(f"Sua vida: {personagemVida}")
+            print(f"\nSua vida: {personagemVida}")
             print(f"Vida inimiga: {inimigoVida}")
-            print("")
-            vencedor()
-            gameOverCheck()
-            input("Pressione para continuar...")
+            input("\nPressione para continuar...")
 
     if ataqueInimigo >= 0 and ataqueInimigo <= 9:
         if personagemClasse == "1":
-            print("\nA Capivara tenta te atacar...")
-            print("Você dá uma cambalhota por cima do ataque dela! Ela erra!")
+            print("\nMORDIDA DE CAPIVARA")
+            print("DEFENDIDO!!!")
             print("\n /\_/.")  
-            print("( `.´ )  -->VAI COMER CARNE DE FRANGO!!!")
+            print("( `.´ )  --> NA PRÒXIMA NÂO ESCAPA!!!")
             print(" \ w /")
             print("  \./")
-            print(f"Sua vida: {personagemVida}")
+            print(f"\nSua vida: {personagemVida}")
             print(f"Vida inimiga: {inimigoVida}")
-            gameOverCheck()
-            input("Pressione para continuar...")
+            input("\nPressione para continuar...")
 
         elif personagemClasse == "2":
-            print("\nO humano tenta atirar em você!")
-            print("Com seu poder de Capivara Matrix você desvia!")
+            print("\nATAQUE DE TIRO DE RIFLE!")
+            print("PULO DE RÃ!!")
             print("\n /\_/.")  
-            print("( `.´ )  -->NINJAA!!")
+            print("( `.´ )  --> MARRECOOO!!")
             print(" \ w /")
             print("  \./")
-            print(f"Sua vida: {personagemVida}")
+            print(f"\nSua vida: {personagemVida}")
             print(f"Vida inimiga: {inimigoVida}")
-            print("")
-            gameOverCheck()
-            input("Pressione para continuar...")
+            input("\nPressione para continuar...")
 
     if ataqueInimigo == 20:
         if personagemClasse == "1":
-            print("\nA Capivara lança um raio lazer em você!")
+            print("\nMORDIDA DE CAPIVARA!")
             print("Ela da um acerto crítico! -2 de vida!")
             print("\n /\_/.")  
             print("( `.´ )  -->PEDE UMA PIZZA!!")
             print(" \ w / ")
             print("  \./")
             personagemVida = personagemVida - 2
-            print(f"Sua vida: {personagemVida}")
+            print(f"\nSua vida: {personagemVida}")
             print(f"Vida inimiga: {inimigoVida}")
-            print("")
-            vencedor()
-            gameOverCheck()
-            input("Pressione para continuar...")
+            input("\nPressione para continuar...")
 
         if personagemClasse == "2":
-            print("\nO humano é um Jedi!")
-            print("Ele usa a força para te prender na parede! Dano crítico! -2 de vida!")
-            print("_/﹋\_")
-            print("(҂`_´   -->PREFERE SER ASSADA OU COZIDA?")
+            print("\nO HUMANO ACERTA UM TIRO!")
+            print("VOCÊ LEVOU UM TIRO NA PALETA! -2 de vida!")
+            print("\n_/﹋\_")
+            print("(҂`_´   --> PREFERE SER ASSADA OU COZIDA?")
             print("<;︻╦╤─") 
             personagemVida = personagemVida - 2
-            print(f"Sua vida: {personagemVida}")
+            print(f"\nSua vida: {personagemVida}")
             print(f"Vida inimiga: {inimigoVida}")
-            print("")
-            vencedor()
-            gameOverCheck()
-            input("Pressione para continuar...")
+            input("\nPressione para continuar...")
+
+    gameOverCheck()
+    vencedor()
 
 # TURNO  SEGUNDO INIMIGO:  =================================================================================
 def turnoSegundoInimigo():
@@ -283,56 +352,62 @@ def turnoSegundoInimigo():
     global inimigoVida2
 
     ataqueInimigo = random.randint(1, 20)
-    print("")
-    print(f"d20 inimigo: {ataqueInimigo}")
-    print("")
+   
 
     if ataqueInimigo >= 10 and ataqueInimigo <= 19:    # SE O SEGUNDO INIMIGO ACERTAR:
         if personagemClasse == "1":                    # VERSÃO HUMANO:
-            print("A Capivara Mãe tenta te atacar...")
-            print("A Capivara te acerta!")
-            print("Você tomou 2 de dano!")
+            print("\nATAQUE DE CAPIVARA!")
+            print("MEGA COICE!")
+            print("\n /\_/.")  
+            print("( `.´ )  --> NÂO CANSA DE APANHAR??")
+            print(" \ w /")
+            print("  \./")
+            print("\nVocê tomou 2 de dano!")
             personagemVida = personagemVida - 2
             print(f"Sua vida: {personagemVida}")
             print(f"Vida inimiga: {inimigoVida2}")
-            print("")
-            gameOverCheck()
             input("Pressione para continuar...")
 
         elif personagemClasse == "2":                  # VERSÃO CAPIVARA:
-            print("O humano tenta atirar em você!")
-            print("O humano te acerta!")
-            print("Você tomou 1 de dano!")
+            print("\nATAQUE DE BALAS")
+            print("\n_/﹋\_")
+            print("(҂`_´  --> PELO MENOS 1")
+            print("<;︻╦╤─ * * * * * * * * * * * *")
+            print("\nVocê tomou 1 de dano!")
             personagemVida = personagemVida - 1
-            print(f"Sua vida: {personagemVida}")
+            print(f"\nSua vida: {personagemVida}")
             print(f"Vida inimiga: {inimigoVida2}")
-            print("")
-            gameOverCheck()
             input("Pressione para continuar...")
 
     if ataqueInimigo >= 0 and ataqueInimigo <= 9:
         if personagemClasse == "1":
-            print("A Capivara Mãe tenta te atacar...")
-            print("Você dá uma cambalhota por cima do ataque dela! Ela erra!")
-            print(f"Sua vida: {personagemVida}")
+            print("\nATAQUE DEFENDIDO")
+            print("\n /\_/.")  
+            print("( ´.` )  --> VAI VER NA PROXIMA")
+            print(" \ w /")
+            print("  \./")
+            print(f"\nSua vida: {personagemVida}")
             print(f"Vida inimiga: {inimigoVida2}")
-            print("")
             gameOverCheck()
             input("Pressione para continuar...")
 
         elif personagemClasse == "2":
-            print("O humano tenta atirar em você!")
-            print("Com seu poder de Capivara Matrix você desvia!")
-            print(f"Sua vida: {personagemVida}")
+            print("\nATAQUE DEFENDIDO!")
+            print("\n_/﹋\_")
+            print("(҂´.`   --> ESSA MIRA ESTA!!")
+            print("<¨¨¨|         DESREGULADA")
+            print(f"\nSua vida: {personagemVida}")
             print(f"Vida inimiga: {inimigoVida2}")
-            print("")
-            gameOverCheck()
             input("Pressione para continuar...")
 
     if ataqueInimigo == 20:
         if personagemClasse == "1":
-            print("A Capivara Mãe lança um raio lazer em você!")
-            print("Ela da um acerto crítico! -4 de vida!")
+            print("ATAQUE DE GARRAS!")
+            print("\n /\_/.")  
+            print("( `.´ )  --> ESSA CAMISA NÃO TE PROTEJE??")
+            print(" \ w /")
+            print("  \./")
+            print("\nAcerto crítico! -4 de vida!")
             personagemVida = personagemVida - 4
             print(f"Sua vida: {personagemVida}")
             print(f"Vida inimiga: {inimigoVida2}")
@@ -342,14 +417,19 @@ def turnoSegundoInimigo():
 
         if personagemClasse == "2":
             print("O humano é um Jedi!")
-            print("Ele usa a força para te prender na parede! Dano crítico! -2 de vida!")
+            print("\n_/﹋\_")
+            print("(҂`_´  --> HE-HE-HE!!!")
+            print("cxxx[]::::::>")
+            print("\nDano crítico! -2 de vida!")
             personagemVida = personagemVida - 2
             print(f"Sua vida: {personagemVida}")
             print(f"Vida inimiga: {inimigoVida2}")
             print("")
             gameOverCheck()
             input("Pressione para continuar...")
-
+    
+    vencedor()
+    gameOverCheck()
 # ATACAR:  =================================================================================
 def atacar(): # HUMANO ATACA CAPIVARA 1
 
@@ -359,12 +439,23 @@ def atacar(): # HUMANO ATACA CAPIVARA 1
 
     os.system('cls') 
 
-    print("""       Escolha seu ataque:""")
-    print("\n            1. CHUTE")
-    print("            2. FACADA")
-    print("            3. METRALHAR")
-    escolha = input("""\n       Escolha um ataque:
-                """)
+    print(f"""{BLACK}
+                                         ╔══════════════════════════════════════════════════╗
+                         ╔═════════════  ║              ESCOLHA COMO ATACAR                 ║
+                         ║{WHITE}  \///////\ {BLACK}   ╠══════════════════════════════════════════════════╣
+                         ║{WHITE}  | _   _ | {BLACK}       HUMANO: {personagemVida}                    CAPIVARA:{inimigoVida}        
+                         ║{WHITE} ( (o\ /o) ){BLACK}   ╠════════════════╦════════════════╦════════════════╣  
+                         ║{WHITE}  |  . .  | {BLACK}   ║{RED}    ____      {BLACK}  ║  {RED}     /| {BLACK}      ║ {RED}   _,________ {BLACK} ║
+                         ║{WHITE}   \ ■■■ /  {BLACK}   ║{RED}    \  _|__   {BLACK}  ║  {RED}     || {BLACK}      ║ {RED}  _T _==____(){BLACK} ║
+                         ║{WHITE}    \_▬_/   {BLACK}   ║{RED}   __)|   /   {BLACK}  ║  {RED}   __||_{BLACK}      ║ {RED} /##(_)-'     {BLACK} ║
+                         ╚══════════════ ║{RED}  (___|  (__  {BLACK}  ║  {RED}   ¯¯||¯{BLACK}      ║ {RED}/##/          {BLACK} ║
+                                         ║{RED}      (_-___) {BLACK}  ║  {RED}     ¯¯ {BLACK}      ║ {RED}¯¯¯           {BLACK} ║
+                                         ╠════════════════╬════════════════╬════════════════║
+                                         ║   1 - CHUTE    ║   2 - FACA     ║    3 - ARMA    ║
+                                         ╚════════════════╩════════════════╩════════════════╝
+{RESET}                        
+""")
+    escolha = input("                                  ")
 
     if escolha == "1":
         print("\nChute Voador!")
@@ -399,17 +490,19 @@ def atacar(): # HUMANO ATACA CAPIVARA 1
     if dano == 0:
         print("Você errou!")
         print("\n_/﹋\_")
-        print("(҂´.`   -->merda!!")
+        print("(҂´.`   ---> SCAPS!!")
         print("<¨¨¨|")
 
 
     inimigoVida -= dano
 
+
     verificarDanoExtra()
 
     print(f"\nSua vida: {personagemVida}")
     print(f"Vida inimiga: {inimigoVida}")
-    print("")
+    gameOverCheck()
+    vencedor()
     input("Pressione Enter para continuar...")
 
     danoExtra = "0"
@@ -422,51 +515,66 @@ def atacarSegundoInimigo(): # HUMANO ATACA CAPIVARA MAE
     global danoExtra
 
     os.system('cls') # LIMPA TELA
+    print("""
+╔════════════════════════╗
+║      MENU DE ATAQUE    ║
+╠════════════════════════╣
+║       1. Chute         ║
+║       2. Facada        ║
+║       3. Metralhar     ║
+╚════════════════════════╝
+""")
+   
+    escolha = input("""\n       QUAL VAI SER O ATAQUE??
+                """)
 
-    input("Pressione para jogar o d20...")
-    print("")
-    tiro = random.randint(0, 20) 
-    print(f"Jogando dado d20: {tiro}")
-    print("")
-
-    if tiro >= 11 and tiro <= 19:
-        print("Você acerta!")
+    if escolha == "1":
+        print("\nLOSANGO ABERTO!")
         dano = random.randint(1, 3)
-        print("Toma! Bem no alvo")
-        print("_/﹋\_")
-        print("(҂`_´  -->MAIS CARNEEE!!!")
-        print("<;︻╦╤─") 
-        print("")
-        print(f"Você deu {dano} de dano!")
-        inimigoVida2 = inimigoVida2 - dano
-        vencedor()
+        print("\nBICUDA!")
+        print("\n_/﹋\_")
+        print("(҂`_´  ---> CHUTE NA CARA")
+        print("<¨¨¨>")
+        
+    elif escolha == "2":
+        print("\nFACADA NA PALETA!")
+        dano = random.randint(0, 5)
+        print("OLHA A FACA!")
+        print("\n_/﹋\_")
+        print("(҂`_´  --> FATIANDO O PRESUNTO!!!")
+        print("cxxx[]::::::>")
 
-    elif tiro >= 0 and tiro <= 10:
+    elif escolha == "3":
+        print("RAJADA DE BALAS")
+        dano = random.randint(0, 7)
+        print("\n_/﹋\_")
+        print("(҂`_´  ---> DIGA OLÁ PRA MINHA AMIGUINHA")
+        print("<;︻╦╤─ * * * * * * * * * * * * * * * * * * * ")
+
+    else:
+        print("Você perdeu a chance de atacar!")
+        dano = 0
+
+    if dano > 0:
+        print(f"\nVocê deu {dano} de dano!")
+    
+    if dano == 0:
         print("Você errou!")
         print("\n_/﹋\_")
-        print("(҂´.`   -->merda!!")
+        print("(҂´.`   --> OPS!!")
         print("<¨¨¨|")
-        vencedor()
 
-    elif tiro == 20:
-        print("Você critou! Dano crítico!")
-        print("")
-        dano = 5
-        print("Toma! Headshot!")
-        print("_/﹋\_")
-        print("(҂`_´  -->QUEREM DIVIDIR")
-        print("<;︻╦╤─    A MESMA PANELA?") 
-        print("")
-        print(f"Você deu {dano} de dano! Insano!")
-        inimigoVida2 = inimigoVida2 - dano
-        vencedor()
+
+    inimigoVida2 -= dano
+
 
     verificarDanoExtra()
 
-    print(f"Sua vida: {personagemVida}")
+    print(f"\nSua vida: {personagemVida}")
     print(f"Vida inimiga: {inimigoVida2}")
-    print("")
-    input("Pressione para continuar...")
+    gameOverCheck()
+    vencedor()
+    input("Pressione Enter para continuar...")
 
     danoExtra = "0"
 
@@ -479,10 +587,15 @@ def ataque(): # CAPIVARA CONTRA HUMANO
 
     os.system('cls') 
 
-    print("""       Escolha seu ataque:""")
-    print("\n            1. MEGA COICE")
-    print("            2. GARRAS AFIADAS")
-    print("            3. MORDIDA FEROZ")
+    print("""
+╔════════════════════════╗
+║      MENU DE ATAQUE    ║
+╠════════════════════════╣
+║       1. COICE         ║
+║       2. GARRAS        ║
+║      3. MORDIDA        ║
+╚════════════════════════╝
+""")
     escolha = input("""\n       Escolha um ataque:
                 """)
 
@@ -498,7 +611,7 @@ def ataque(): # CAPIVARA CONTRA HUMANO
     elif escolha == "2":
         print("\nATAQUE DE GARRAS!")
         dano = random.randint(0, 5)
-        print("RASGOOOO!")
+        print("RASGOOOOU???")
         print("\n /\_/.")  
         print("( `.´ )  --> ESSA VAI VIRAR CICATRIZ")
         print(" \ w /           SEU B!!")
@@ -507,23 +620,23 @@ def ataque(): # CAPIVARA CONTRA HUMANO
     elif escolha == "3":
         print("ATAQUE DE MORDIDA!")
         dano = random.randint(0, 7)
-        print("Toma! Mega Coice!")
+        print("MORDIDA NA CANELA!")
         print("\n /\_/.")  
-        print("( `.´ )  --> QUE TAL OVOS FRITOS?")
-        print(" \ w /           !!OTÁRIO!!")
+        print("( `.´ )  --> A PROXIMA VAI SER PIOR!")
+        print(" \ w / ")
         print("  \./")
     else:
-        print("Você perdeu a chance de atacar!")
+        print("\nVocê perdeu a chance de atacar!")
         dano = 0
 
     if dano > 0:
         print(f"\nVocê deu {dano} de dano!")
     
     if dano == 0:
-        print("Você errou!")
+        print("Você ERRA!")
         print("\n /\_/.")  
-        print("( ´.` )  -->ESSA FOI NO PESCOÇO")
-        print(" \ w /           SEU OTÁRIO!!")
+        print("( ´.` )  --> EU ESTAVA BRINCANDO")
+        print(" \ w /")
         print("  \./")
 
 
@@ -534,6 +647,8 @@ def ataque(): # CAPIVARA CONTRA HUMANO
     print(f"\nSua vida: {personagemVida}")
     print(f"Vida inimiga: {inimigoVida}")
     print("")
+    vencedor()
+    gameOverCheck()
     input("Pressione Enter para continuar...")
 
     danoExtra = "0"
@@ -584,20 +699,34 @@ def ItemCapivara():
     global danoExtra
 
     os.system('cls')
-    print("\n\n=============== INVENTÁRIO ===============")
-    print(f"\n1- Abóboras! (+5HP): {pocaoCura}")
-    print(f"2- Pedra de afiar dente (+2 Dano Garantido): {pocaoDano}")
-    print("3- Voltar...")
-    print("\n==========================================")
+    print(f"""
+  _____________________________________
+ /                                     \#####################################################
+|    ╔═════════════════════════════╗    |  ___                      _    __       _        ##
+|    ║                             ║    | |_ _|_ ____   _____ _ __ | |_ /_/_ _ __(_) ___   ###
+|    ║============|\_/|=           ║    |  | || '_ \ \ / / _ \ '_ \| __/ _` | '__| |/ _ \. ####
+|    ║##########=( o"O )=          ║    |  | || | | \ V /  __/ | | | || (_| | |  | | (_) | ####
+|    ║===========/\ " /\===========║    | |___|_| |_|\_/ \___|_| |_|\__\__,_|_|  |_|\___/  ###
+|    ║         =| |\_/| |=#########║    |                                                  ##
+|    ║         =\_>---<_/==========║    |####################################################
+|    ║          (___|___)          ║    |  ##          1 - COGUMELOS! (+5HP): {pocaoCura}            ##
+|    ╚═════════════════════════════╝    |  ##  2- Pedra de afiar dente (+2 Dano): {pocaoDano}        ##
+ \_____________________________________/   ##           3 - Voltar                         ##
+                                           ##################################################
+""")
+    
+    print("\n=============================================================================")
     print("\nSelecione uma opção...")
     i = input()
 
     if i == "1" and pocaoCura >= 1:
-        print("Você Uma Abóbora!")
-        print("""\n
-                  _/_
-                 / | Ԇ
-                 \_|_/ """)
+        print("\nVOCÊ COMEU UM COGUMELO!")
+        print("""
+                .-"'"-.
+               /* * * *\.
+              :_.-:`:-._;
+                  (_)
+               \|/(_)\|/ """)
         personagemVida = personagemVida + 2
         pocaoCura = pocaoCura - 1
         print(f"\nSua vida agora é: {personagemVida} HP")
@@ -606,25 +735,31 @@ def ItemCapivara():
     elif i == "1" and pocaoCura == 0:
         print("Você não possui mais deste item!")
         input("Pressione para continuar...")
-        usarItem()
+        ItemCapivara()
 
     elif i == "2" and pocaoDano >= 1:
         print("\nVocê afiou os dentes em uma pedra")
+        print("""          
+                    ______
+                   /      \.
+                  /        \#
+                  \        /
+                   \______/         """)
         
-        input("Pressione para continuar...")
+        input("\nPressione para continuar...")
         danoExtra = "1"
         pocaoDano = pocaoDano - 1
 
     elif i == "2" and pocaoDano == 0:
         print("Você não possui mais deste item!")
         input("Pressione para continuar...")
-        usarItem()
+        ItemCapivara()
 
     elif i == "3":
-        batalhaCapivara
+        batalhaCapivara()
 
     else:
-        usarItem()
+        ItemCapivara()
 
 def usarItem():
 
@@ -634,14 +769,22 @@ def usarItem():
     global danoExtra
 
     os.system('cls')
-    print("=============== INVENTÁRIO ===============")
-    print("")
-    print(f"1- KIT MÉDICO (+2HP): {pocaoCura}")
-    print(f"2- MUNIÇÂO EXPLOSIVA (+2 Dano Garantido): {pocaoDano}")
-    print("3- Voltar...")
-    print("")
-    print("==========================================")
-    print("")
+    print(f"""
+  _____________________________________
+ /                                     \#####################################################
+|    ╔═════════════════════════════╗    |  ___                      _    __       _        ##
+|    ║                             ║    | |_ _|_ ____   _____ _ __ | |_ /_/_ _ __(_) ___   ###
+|    ║==========\///////\          ║    |  | || '_ \ \ / / _ \ '_ \| __/ _` | '__| |/ _ \. ####
+|    ║          | _   _ |          ║    |  | || | | \ V /  __/ | | | || (_| | |  | | (_) | ####
+|    ║=========( (o) (o) )=========║    | |___|_| |_|\_/ \___|_| |_|\__\__,_|_|  |_|\___/  ###
+|    ║          |  . .  |          ║    |                                                  ##
+|    ║           \  _  /===========║    |####################################################
+|    ║            \___/            ║    |  ##          1 - KIT MÈDICO! (+5HP): {pocaoCura}           ##
+|    ╚═════════════════════════════╝    |  ##  2- MUNIÇÃO EXPLOSIVA (+2 Dano): {pocaoDano}           ##
+ \_____________________________________/   ##           3 - Voltar                         ##
+                                           ##################################################
+""")
+    print("\n=============================================================================")
     print("Selecione uma opção...")
     i = input()
 
@@ -670,9 +813,9 @@ def usarItem():
         print("""
      ----.
      "   _}
-     "@   >
+     "@   >    <------- VAI SER UM ESTOURO
      |\   7
-     / `-- _         ,-------,  *  *  *  *  *  *
+     / `-- _         ,-------,
   ~    >o<  \---------o(__)-
  /  |  \  /  ________/8'
  |  |       /         "
@@ -680,7 +823,7 @@ def usarItem():
 """)
         print("\nSerá aplicado o dano no seu próximo turno")
         input("\nPressione para continuar...")
-        danoExtra = "1"
+        danoExtra = "2"
         pocaoDano = pocaoDano - 1
 
     elif i == "2" and pocaoDano == 0:
@@ -725,9 +868,15 @@ def batalhaHumano():
         os.system('cls')
 
         if turno == "0":
-            print(f"Sua vida: {personagemVida}     Vida inimiga: {inimigoVida}")
-            print("")
-            print("Você encontra uma Capivara Selvagem, o que você faz?")
+            print(f"""
+                        ╔═══════════════════════════════════════════════════════╗
+                        ║                          LIFE                         ║
+                        ╠═══════════════════════════════════════════════════════╣
+                               VOCÊ: {personagemVida}                         INIMIGO:{inimigoVida}        
+                        ╠═══════════════════════════════════════════════════════╣
+                        ║     1 - ATACAR     2 - USAR ITEM     3 - FUGIR        ║
+                        ╚═══════════════════════════════════════════════════════╝
+""")
             jogadorEscolha = "0"
             jogadorEscolha = opcaoBatalha()
             print(f"A escolha do jogador foi {jogadorEscolha}")
@@ -749,8 +898,8 @@ def batalhaHumano():
             turno = "1"
 
         if turno == "1" and inimigoVida > 0:
-            print("")
-            print("==============")
+            os.system('cls')
+            print("\n==============")
             print("Turno inimigo!")
             print("==============")
             turnoInimigo()
@@ -760,15 +909,13 @@ def batalhaHumano():
     # JOGADOR DERROTA PRIMEIRO INIMIGO, SEGUNDO INIMIGO:
     if inimigoVida <= 0 and verificarMorto == "1":
         os.system('cls')
-        print("")
-        print("Parabéns! Você derrotou a capivara bebê!")
-        print("")
-        print("========== LOOT ==========")     # JOGADOR RECEBE LOOT
-        print("")
-        print("KIT MÉDICO + 2 ")
+        
+        print("\n\nParabéns! Você derrotou a capivara bebê!")
+    
+        print("\n========== LOOT ==========")     # JOGADOR RECEBE LOOT
+        print("\nKIT MÉDICO + 2 ")
         print("MUNIÇÃO EXPLOSIVA + 1")
-        print("")
-        print("==========================")
+        print("\n==========================")
         pocaoCura = pocaoCura + 2
         pocaoDano = pocaoDano + 1
 
@@ -776,17 +923,17 @@ def batalhaHumano():
         input("...")
         print("")
         print("A Capivara filhote grita por ajuda e uma capivara adulta!")
-        print("""      
-              ___                                      _,--""--,_
-          .="   "=._.---.                         _,,-"          \.
-        ."         c ´ Y `p                   ,-e"                ;
-       /   ,       `.  O_/                   (*             \     | 
-       |   '-.   /     /                      \o\     __,-"  )    |
- _,..._|      )_-\ \_=.\.                      `,_   (((__,-"     L___
-`------'`------)))`=-'"`'"                        ) ,---\  /\    / -- '
-                                                _/ /     )_||   /
-                                                ''''     '''|_ /
-                                                            '''
+        print("""\n            |ME AJUDA AI POO!!|
+              ___             /                                     _,--""--,_
+          .="   "=._.---.    /                                 _,,-"          \.
+        ."         c ´ Y `p                                ,-e"                ;
+       /   ,       `.  O_/                                (*             \     | 
+       |   '-.   /     /                                   \o\     __,-"  )    |
+    .._|      )_-\ \_=.\.                                 / `,_   (((__,-"     L___
+      \.'`----)))`=-'"`'"                |JÁ ENCOSTO AI!|/     ) ,---\  /\    / -- '
+                                                             _/ /     )_||   /
+                                                             ''''     '''|_ /
+                                                                         '''
               
 """)
         input("...")
@@ -869,50 +1016,56 @@ def atacarSegundohumano(): # ATACAR O SEGUNDO HUMANO
     global danoExtra
 
     os.system('cls') # LIMPA TELA
+    print("""       Escolha seu ataque:""")
+    print("\n            1. MEGA COICE")
+    print("            2. GARRAS AFIADAS")
+    print("            3. MORDIDA FEROZ")
+    escolha = input("""\n       Escolha um ataque:
+                """)
 
-    input("Pressione para jogar o d20...")
-    print("")
-    tiro = random.randint(0, 20) 
-    print(f"Jogando dado d20: {tiro}")
-    print("")
-
-    if tiro >= 11 and tiro <= 19:
-        print("Você acerta!")
+    if escolha == "1":
+        print("\nATAQUE DE COICE!")
         dano = random.randint(1, 3)
-        print("Mordida no braço")
+        print("Toma! MEGA COICE!")
         print("\n /\_/.")  
-        print("( `.´ )  -->HUMANO FERIDO!!")
+        print("( `.´ )  --> CHUTE NOS OVOS")
+        print(" \ w /            OTÁRIO!!")
+        print("  \./")
+        
+    elif escolha == "2":
+        print("\nATAQUE DE GARRAS!")
+        dano = random.randint(0, 5)
+        print("RASGOOOOU???")
+        print("\n /\_/.")  
+        print("( `.´ )  --> MAIS UMA PRA CONTA")
+        print(" \ w /            !!")
+        print("  \./")
+
+    elif escolha == "3":
+        print("ATAQUE DE MORDIDA!")
+        dano = random.randint(0, 7)
+        print("MORDIDA NA CANELA!")
+        print("\n /\_/.")  
+        print("( `.´ )  --> FALEI QUE IA FICAR PIOR!")
         print(" \ w / ")
         print("  \./")
+    else:
+        print("\nVocê perdeu a chance de atacar!")
+        dano = 0
+
+    if dano > 0:
         print(f"\nVocê deu {dano} de dano!")
-        inimigoVida2 = inimigoVida2 - dano
-
-    elif tiro >= 0 and tiro <= 10:
-        print("INEFICAZ!")
-        print("\n_/﹋\_")
-        print("(҂`_´  -->SE FUDEU")
-        print("<;︻╦╤─ * * * * * * * * * * * *") 
-
-    elif tiro == 20:
-        print("Você critou! Dano crítico!")
-        print("")
-        dano = 5
-        print("Toma! Mega Coice!")
+    
+    if dano == 0:
+        print("\nVocê ERROU!")
         print("\n /\_/.")  
-        print("( `.´ )  -->ESSA FOI NO PESCOÇO")
-        print(" \ w /           SEU OTÁRIO!!")
+        print("( ´.` )  --> EU ESTAVA BRINCANDO")
+        print(" \ w /")
         print("  \./")
-        print(f"Você deu {dano} de dano! Insano!")
-        inimigoVida2 = inimigoVida2 - dano
+    
+    vencedor()
+    gameOverCheck()
 
-    verificarDanoExtra()
-
-    print(f"Sua vida: {personagemVida}")
-    print(f"Vida inimiga: {inimigoVida2}")
-    print("")
-    input("Pressione para continuar...")
-
-    danoExtra = "0"
 
 def batalhaCapivara():
 
@@ -930,9 +1083,15 @@ def batalhaCapivara():
         os.system('cls')
 
         if turno == "0":
-            print(f"CAPIVARA: {personagemVida}     HUMANO: {inimigoVida}")
-            print("")
-            print("\nVocê é encurralado por um humano caçador, o que você faz?")
+            print(f"""
+                        ╔═══════════════════════════════════════════════════════╗
+                        ║                          LIFE                         ║
+                        ╠═══════════════════════════════════════════════════════╣
+                            CAPIVARA: {personagemVida}                         HUMANO:{inimigoVida}        
+                        ╠═══════════════════════════════════════════════════════╣
+                        ║     1 - ATACAR     2 - USAR ITEM     3 - FUGIR        ║
+                        ╚═══════════════════════════════════════════════════════╝
+""")
             jogadorEscolha = "0"
             jogadorEscolha = opcaoBatalha()
             print(f"A escolha do jogador foi {jogadorEscolha}")
@@ -941,7 +1100,7 @@ def batalhaCapivara():
                 ataque()
 
             elif jogadorEscolha == "2":
-                usarItem()
+                ItemCapivara()    
                 batalhaCapivara()
 
             elif jogadorEscolha == "3":
