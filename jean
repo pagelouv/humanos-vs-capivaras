@@ -536,11 +536,12 @@ def atacarSegundoInimigo(): # HUMANO ATACA CAPIVARA MAE
     global danoExtra
 
     os.system('cls') # LIMPA TELA
+    
     print(f"""{BLACK}
-                     ╔══════════════════════════════════════════════════╗
-    ╔═════════════   ║              ESCOLHA COMO ATACAR                 ║
+                    ╔══════════════════════════════════════════════════╗
+    ╔═════════════  ║              ESCOLHA COMO ATACAR                 ║
     ║{WHITE}  \///////\ {BLACK}   ╠══════════════════════════════════════════════════╣
-    ║{WHITE}  | _   _ | {BLACK}       HUMANO: {personagemVida}                    CAPIVARA:{inimigoVida}        
+    ║{WHITE}  | _   _ | {BLACK}       HUMANO: {personagemVida}                 2ª CAPIVARA:{inimigoVida2}        
     ║{WHITE} ( (o\ /o) ){BLACK}   ╠════════════════╦════════════════╦════════════════╣  
     ║{WHITE}  |  . .  | {BLACK}   ║{RED}    ____      {BLACK}  ║  {RED}     /| {BLACK}      ║ {RED}   _,________ {BLACK} ║
     ║{WHITE}   \ ■■■ /  {BLACK}   ║{RED}    \  _|__   {BLACK}  ║  {RED}     || {BLACK}      ║ {RED}  _T _==____(){BLACK} ║
@@ -553,8 +554,7 @@ def atacarSegundoInimigo(): # HUMANO ATACA CAPIVARA MAE
 {RESET}                        
 """)
    
-    escolha = input("""\n       QUAL VAI SER O ATAQUE??
-                """)
+    escolha = input("                                       ")
 
     if escolha == "1":
         print("\nLOSANGO ABERTO!")
@@ -1008,7 +1008,7 @@ def batalhaHumano():
                                             ╔══════════════════════════════════════════════════╗
                                             ║                 ESCOLHA UMA AÇÃO                 ║
                                             ╠══════════════════════════════════════════════════╣
-                                                HUMANO: {personagemVida}                    2ª CAPIVARA: {inimigoVida2}        
+                                                HUMANO: {personagemVida}                2ª CAPIVARA:{inimigoVida2}        
                                             ╠════════════════╦════════════════╦════════════════╣  
                                             ║     ______     ║                ║        .       ║
                                             ║    /../../\    ║     ,===.      ║    __O/        ║
@@ -1019,24 +1019,24 @@ def batalhaHumano():
                                             ║   1 - ATACAR   ║   2 - ITENS    ║   3 - FUGIR    ║
                                             ╚════════════════╩════════════════╩════════════════╝
                         """)
-            input()
+            
             jogadorEscolha = "0"
-            jogadorEscolha = batalhaHumano()
-            print(f"A escolha do jogador foi {jogadorEscolha}")
+            jogadorEscolha = opcaoBatalha()
+            print(f"Você escolheu: {jogadorEscolha}")
 
             if jogadorEscolha == "1":
                 atacarSegundoInimigo()
 
             elif jogadorEscolha == "2":
                 usarItem()
-                batalhaHumano()
+                atacarSegundoInimigo()
 
             elif jogadorEscolha == "3":
                 fugir()
 
             else:
                 print("Opção inválida...")
-                batalhaHumano()
+                atacarSegundoInimigo()
 
             turno = "1"
 
