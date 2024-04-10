@@ -108,7 +108,7 @@ def ler_texto():
     for letra in texto:
         sys.stdout.write(letra)
         sys.stdout.flush()
-        time.sleep(0.00)
+        time.sleep(0.05)
 
     print()
 
