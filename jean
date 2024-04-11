@@ -3,6 +3,8 @@ import os
 import sys
 import time
 
+
+
 # VARIÁVEIS GLOBAIS: =================================================================================
 
 personagemClasse = "0" #0 = nenhuma, 1 = humano, 2 = capivara
@@ -22,6 +24,46 @@ GREEN = '\033[92m'
 BLUE = '\033[94m'
 BLACK = "\033[1;30m"
 WHITE = "\033[1;37m"
+TITULO =f"""\n
+    {RED} __                                                   {WHITE} ___ ___  _______ {RED}                       __                                   
+    {RED}|  |--..--.--..--------..---.-..-----..-----..-----.  {WHITE}|   Y   ||   _   |{RED}  .----..---.-..-----.|__|.--.--..---.-..----..---.-..-----.
+    {RED}|     ||  |  ||        ||  _  ||     ||  _  ||__ --|  {WHITE}|.  |   ||   1___|{RED}  |  __||  _  ||  _  ||  ||  |  ||  _  ||   _||  _  ||__ --|
+    {RED}|__|__||_____||__|__|__||___._||__|__||_____||_____|  {WHITE}|.  |   ||____   |{RED}  |____||___._||   __||__| \___/ |___._||__|  |___._||_____|
+                                                          {WHITE}|:  1   ||:  1   |     {RED}          |__|                                         
+                                                          {WHITE} \:.. ./ |::.. . |                                                            
+                                                          {WHITE}  `---'  `-------' {RESET}"""
+texto = RED +"""
+        Numa manhã ensolarada numa pequena cidade às margens de um rio, um estranho acontecimento começou a se desenrolar.
+
+        Um grupo de capivaras, decidiu tomar posse das terras próximas ao rio, que há muito tempo pertenciam aos moradores
+
+        Os moradores, inicialmente surpresos com a audácia das capivaras, logo se viram em uma batalha inesperada
+        pela terra. 
+        Armados com enxadas e qualquer coisa que pudessem encontrar, os moradores se prepararam para defender o que era deles.
+
+        As capivaras, com suas afiadas garras e dentes, estavam determinadas a manter o que consideravam seu território agora.
+
+        
+                                             DE QUAL LADO VOCÊ VAI FICAR?? 
+""" + RESET
+texto1 =f"""{RED}
+                        Ora, ora, ora! o que temos aqui?
+                    Parece que uma capivara se perdeu do grupo!
+                        acho que vai dar um ótimo troféu!
+                          
+                          PREPARE-SE PARA A MORTE!!! 
+{RESET}""" 
+texto2 =f"""{RED}
+                        Quando esses HUMANOS irão mandar
+                    alguem que não seja um fracote como você?
+
+                        VAMOS ACABAR LOGO COM ISSO!!
+{RESET}"""
+texto3 =f"""
+                         ISSO NÂO VAI FICAR ASSIM!!!
+                     ALGUMA CAPIVARA MAIS FORTE ME VINGARÁ!
+"""
+
 
 # MENU: =================================================================================
 def menu():
@@ -35,14 +77,7 @@ def menu():
         
      
         
-        print(RED +"""\n
-     __                                                    ___ ___  _______                        __                                   
-    |  |--..--.--..--------..---.-..-----..-----..-----.  |   Y   ||   _   |  .----..---.-..-----.|__|.--.--..---.-..----..---.-..-----.
-    |     ||  |  ||        ||  _  ||     ||  _  ||__ --|  |.  |   ||   1___|  |  __||  _  ||  _  ||  ||  |  ||  _  ||   _||  _  ||__ --|
-    |__|__||_____||__|__|__||___._||__|__||_____||_____|  |.  |   ||____   |  |____||___._||   __||__| \___/ |___._||__|  |___._||_____|
-                                                          |:  1   ||:  1   |               |__|                                         
-                                                           \:.. ./ |::.. . |                                                            
-                                                            `---'  `-------' """+ RESET)
+        titulo()
         
         print("""
                                   ____________________________________________________________________
@@ -89,43 +124,61 @@ def menu():
 
         else:
             print("Comando inválido")
-# HISTÓRIA ==============================================================================
+ # HISTÓRIA ==============================================================================
 def ler_texto():
-    texto = RED +"""
-        Numa manhã ensolarada numa pequena cidade às margens de um rio, um estranho acontecimento começou a se desenrolar.
-
-        Um grupo de capivaras, decidiu tomar posse das terras próximas ao rio, que há muito tempo pertenciam aos moradores
-
-        Os moradores, inicialmente surpresos com a audácia das capivaras, logo se viram em uma batalha inesperada
-        pela terra. 
-        Armados com enxadas e qualquer coisa que pudessem encontrar, os moradores se prepararam para defender o que era deles.
-
-        As capivaras, com suas afiadas garras e dentes, estavam determinadas a manter o que consideravam seu território agora.
-
-        
-                                             DE QUAL LADO VOCÊ VAI FICAR?? 
-""" + RESET
+    global texto
+    
     for letra in texto:
         sys.stdout.write(letra)
         sys.stdout.flush()
         time.sleep(0.0)
 
+    
+
     print()
-# HISTORIA 2 ============================================================================
+
+def titulo():
+    global TITULO
+
+
+    for letra in TITULO:
+        sys.stdout.write(letra)
+        sys.stdout.flush()
+        time.sleep(0.005)
+
+    print()
+
+ # HISTORIA 2 ============================================================================
 def ler_texto1():
-    texto1 ="""
-                        Ora, ora, ora! o que temos aqui?
-                    Parece que uma capivara se perdeu do grupo!
-                        acho que vai dar um ótimo troféu!
-                          
-                          PREPARE-SE PARA A MORTE!!! 
-""" 
+    global texto1
+
+
     for letra in texto1:
         sys.stdout.write(letra)
         sys.stdout.flush()
         time.sleep(0.05)
 
     print()
+ # HISTORIA 2.2 =========================================================================
+def ler_texto2():
+    global texto2
+
+    for letra in texto2:
+        sys.stdout.write(letra)
+        sys.stdout.flush()
+        time.sleep(0.05)
+    print()    
+ #HISTORIA VIRADA HUMANO VS CAPIVARA ===============================================================
+def ler_texto3():
+    global texto3
+
+    for letra in texto3:
+        sys.stdout.write(letra)
+        sys.stdout.flush()
+        time.sleep(0.05)
+    print()       
+
+
 # RESETAR JOGO: =================================================================================
 def resetGame():
     global personagemClasse
@@ -216,13 +269,13 @@ def selecionarClasse():
 
 """ + RESET)
 
-    print("""
-        ╔═════════════════════════════╗    __                ___    ╔═════════════════════════════╗  
-        ║                             ║   /_ |              |__ \   ║                             ║
-        ║==========\///////\          ║    | |     _____       ) |  ║============|\_/|=           ║
-        ║          | _   _ |          ║    | |    |_____|     / /   ║##########=( o"O )=          ║
-        ║=========( (o) (o) )=========║    | |               / /_   ║===========/\ " /\===========║
-        ║          |  . .  |          ║    |_|              |____|  ║         =| |\_/| |=#########║
+    print(f"""
+        ╔═════════════════════════════╗  {RED}  __                ___ {RESET}   ╔═════════════════════════════╗  
+        ║                             ║  {RED} /_ |              |__ \ {RESET}  ║                             ║
+        ║==========\///////\          ║  {RED}  | |     _____       ) | {RESET} ║============|\_/|=           ║
+        ║          | _   _ |          ║  {RED}  | |    |_____|     / /  {RESET} ║##########=( o"O )=          ║
+        ║=========( (o) (o) )=========║  {RED}  | |               / /_  {RESET} ║===========/\ " /\===========║
+        ║          |  . .  |          ║  {RED}  |_|              |____| {RESET} ║         =| |\_/| |=#########║
         ║           \  _  /===========║                             ║         =\_>---<_/==========║
         ║            \___/            ║                             ║          (___|___)          ║
         ╚═════════════════════════════╝                             ╚═════════════════════════════╝ 
@@ -255,7 +308,24 @@ def selecionarClasse():
                      ║[0]{WHITE}                                           {GREEN}[0]║                                     
                      ╚═════════════════════════════════════════════════╝ 
               {RESET}""")
-        input()
+        input("Press...")
+        os.system('cls')
+        print(f"""{GREEN}      
+                     ╔════════════════════════════════════╗
+                     ║[0]                              [0]║
+                     ║ |                                | ║ 
+                     ║ |{WHITE}             ___                {GREEN}| ║
+                     ║ |{WHITE}          .="   "=._.---.       {GREEN}| ║
+                     ║ |{WHITE}        ."         c ` Y´`p     {GREEN}| ║
+                     ║ |{WHITE}       /   ,       `. \m/       {GREEN}| ║
+                     ║ |{WHITE}      |   '-.   /     /         {GREEN}| ║ 
+                     ║ |{WHITE}     _|      )_-\ \_=.\         {GREEN}| ║
+                     ║ |{WHITE}   .-'`------)))`=-'"`'"        {GREEN}| ║
+                     ║ |                                | ║               
+                     ║[0]                              [0]║               
+                     ╚════════════════════════════════════╝{RESET}""")
+        ler_texto2()
+        input("Press...")      
 
     elif personagemClasse == "2":
         os.system('cls')
@@ -873,17 +943,13 @@ def usarItem():
         usarItem()
 
     elif i == "2" and pocaoDano >= 1:
-        print("Você carregou a arma com munição explosiva!")
+        print("Você carregou a arma com munição traçante!")
         print("""
-     ----.
-     "   _}
-     "@   >    <------- VAI SER UM ESTOURO
-     |\   7
-     / `-- _         ,-------,
-  ~    >o<  \---------o(__)-
- /  |  \  /  ________/8'
- |  |       /         "
- |  /      |
+    _    ___    ___    ___    ___             
+_`| / __`| / __`| / __`| / .-^  ___        
+---/ /----/ /----/ /----/ /--=^^   ^^=, 
+--/ /----/ /----/ /----/ /---=__   __='  
+|._/   |._/   |._/   |._/       ^^^ 
 """)
         print("\nSerá aplicado o dano no seu próximo turno")
         input("\nPressione para continuar...")
@@ -978,18 +1044,76 @@ def batalhaHumano():
     # JOGADOR DERROTA PRIMEIRO INIMIGO, SEGUNDO INIMIGO:
     if inimigoVida <= 0 and verificarMorto == "1":
         os.system('cls')
+
+        print(f"""{RED}      
+                     ╔════════════════════════════════════╗
+                     ║[0]                              [0]║
+                     ║ |                                | ║ 
+                     ║ |{WHITE}             ___                {RED}| ║
+                     ║ |{WHITE}          .="   "=._.---.       {RED}| ║
+                     ║ |{WHITE}        ."         c ´ Y`p      {RED}| ║
+                     ║ |{WHITE}       /   ,       `. \./       {RED}| ║
+                     ║ |{WHITE}      |   '-.   /     /         {RED}| ║ 
+                     ║ |{WHITE}     _|      )_-\ \_=.\         {RED}| ║
+                     ║ |{WHITE}   .-'`------)))`=-'"`'"        {RED}| ║
+                     ║ |                                | ║               
+                     ║[0]                              [0]║               
+                     ╚════════════════════════════════════╝{RESET}""")
+        ler_texto3()
+        input()
+        os.system('cls')
+        print("\n\n                  PARABÉNS VOCÊ DERROTOU UMA CAPIVARA!!!!")
         
-        print("\n\nParabéns! Você derrotou a capivara bebê!")
+        print("""\n\n
+                "7_/"7_/"7_/"7_/"7_/"7_/"7_/"7_/"7_/"7_/"7_/"7_/"7_/"7
+                "7_/"7_/"7_/"7_/"7_/"7_/"7_/"7_/"7_/"7_/"7_/"7_/"7_/"7
+                                        KIT MÉDICO
+                          ______________
+                         /     __      /|
+                        /   __/ /_    / /       _    ___ 
+                       /   /_  __/   / /      _( )_ (__ \.
+                      /     /_/     / /      (_   _)/ __/
+                     /_____________/ /         (_)  \___)
+                    |_______8______|/
+              
+                "7_/"7_/"7_/"7_/"7_/"7_/"7_/"7_/"7_/"7_/"7_/"7_/"7_/"7
+                "7_/"7_/"7_/"7_/"7_/"7_/"7_/"7_/"7_/"7_/"7_/"7_/"7_/"7
+                                    MUNIÇÃO TRAÇANTE
+                _    ___    ___    ___    ___                   _   __
+                    _`| / __`| / __`| / __`| / .-^  ___       _( )_(  ) 
+                ---/ /----/ /----/ /----/ /--=^^   ^^=,      (_   _))(
+                --/ /----/ /----/ /----/ /---=__   __='        (_) (__)
+                |._/   |._/   |._/   |._/       ^^^ 
+                
+                "7_/"7_/"7_/"7_/"7_/"7_/"7_/"7_/"7_/"7_/"7_/"7_/"7_/"7
+                "7_/"7_/"7_/"7_/"7_/"7_/"7_/"7_/"7_/"7_/"7_/"7_/"7_/"7
+""")
+        input()
     
-        print("\n========== LOOT ==========")     # JOGADOR RECEBE LOOT
-        print("\nKIT MÉDICO + 2 ")
-        print("MUNIÇÃO EXPLOSIVA + 1")
-        print("\n==========================")
+    
         pocaoCura = pocaoCura + 2
         pocaoDano = pocaoDano + 1
 
         print("")
         input("...")
+        os.system('cls')
+        print(f"""{RED}      
+                     ╔════════════════════════════════════╗
+                     ║[0]                              [0]║
+                     ║ |                                | ║ 
+                     ║ |{WHITE}             ___                {RED}| ║
+                     ║ |{WHITE}          .="   "=._.---.       {RED}| ║
+                     ║ |{WHITE}        ."         c ´ Y`p      {RED}| ║
+                     ║ |{WHITE}       /   ,       `. \./       {RED}| ║
+                     ║ |{WHITE}      |   '-.   /     /         {RED}| ║ 
+                     ║ |{WHITE}     _|      )_-\ \_=.\         {RED}| ║
+                     ║ |{WHITE}   .-'`------)))`=-'"`'"        {RED}| ║
+                     ║ |                                | ║               
+                     ║[0]                              [0]║               
+                     ╚════════════════════════════════════╝{RESET}""")
+        ler_texto3()
+        input()
+        
         print("")
         print("A Capivara filhote grita por ajuda e uma capivara adulta!")
         print("""\n            |ME AJUDA AI POO!!|
