@@ -144,7 +144,7 @@ def titulo():
     for letra in TITULO:
         sys.stdout.write(letra)
         sys.stdout.flush()
-        time.sleep(0.005)
+        time.sleep(0.0)
 
     print()
 
@@ -178,7 +178,117 @@ def ler_texto3():
         time.sleep(0.05)
     print()       
 
+def iniciar_animacao():
+    
+    os.system('cls')
+    print(f""" 
+          
+          
+        _/﹋\_                                                                   
+        (҂`_´                                                                     /\_/.
+         |__\                                                                    ( `.´ )
+         <;︻╦╤─    *                                                             \ w /
+                                                                                   \./               
+    """)
 
+    time.sleep(0.05)
+    os.system('cls')
+
+    print(f""" 
+          
+          
+        _/﹋\_                                                                   
+        (҂`_´                                                                     /\_/.
+         |__\                                                                    ( `.´ )
+         <;︻╦╤─            *                                                     \ w /
+                                                                                   \./               
+    """)
+
+    time.sleep(0.05)
+    os.system('cls')
+    print(f""" 
+          
+          
+        _/﹋\_                                                                   
+        (҂`_´                                                                     /\_/.
+         |__\                                                                    ( `.´ )
+         <;︻╦╤─                     *                                            \ w /
+                                                                                   \./               
+    """)
+
+    time.sleep(0.05)
+    os.system('cls')
+    print(f""" 
+          
+          
+        _/﹋\_                                                                   
+        (҂`_´                                                                     /\_/.
+         |__\                                                                    ( `.´ )
+         <;︻╦╤─                              *                                   \ w /
+                                                                                   \./               
+    """)
+
+    time.sleep(0.05)
+    os.system('cls')
+
+    print(f""" 
+          
+          
+        _/﹋\_                                                                   
+        (҂`_´                                                                     /\_/.
+         |__\                                                                    ( `.´ )
+         <;︻╦╤─                                    *                             \ w /
+                                                                                   \./               
+    """)
+    time.sleep(0.05)
+    os.system('cls')
+    print(f""" 
+          
+          
+        _/﹋\_                                                                   
+        (҂`_´                                                                     /\_/.
+         |__\                                                                    ( `.´ )
+         <;︻╦╤─                                          *                       \ w /
+                                                                                   \./               
+    """)
+
+    time.sleep(0.05)
+    os.system('cls')
+    print(f""" 
+          
+          
+        _/﹋\_                                                                   
+        (҂`_´                                                                     /\_/.
+         |__\                                                                    ( `.´ )
+         <;︻╦╤─                                                 *                \ w /
+                                                                                   \./               
+    """)
+
+    time.sleep(0.05)
+    os.system('cls')
+
+    print(f""" 
+          
+          
+        _/﹋\_                                                                   
+        (҂`_´                                                                     /\_/.
+         |__\                                                                    ( `.´ )
+         <;︻╦╤─                                                         *        \ w /
+                                                                                   \./               
+    """)
+
+    time.sleep(0.05)
+    os.system('cls')
+
+    print(f""" 
+          15
+          
+        _/﹋\_                                                                   
+        (҂`_´                                                                     /\_/.
+         |__\                                                                    ( ´.` )    
+         <;︻╦╤─                                                                  \ - /    ----> VOCÊ ME ACERTOU!!
+                                                                                   \./               
+    """)
 # RESETAR JOGO: =================================================================================
 def resetGame():
     global personagemClasse
@@ -603,9 +713,7 @@ def atacar(): # HUMANO ATACA CAPIVARA 1
     elif escolha == "3":
         print("RAJADA DE BALAS")
         dano = random.randint(0, 7)
-        print("\n_/﹋\_")
-        print("(҂`_´  --> VAI VIRAR PENEIRA")
-        print("<;︻╦╤─ * * * * * * * * * * * *")
+        iniciar_animacao()
 
     else:
         print("Você perdeu a chance de atacar!")
@@ -721,14 +829,21 @@ def ataque(): # CAPIVARA CONTRA HUMANO
 
     os.system('cls') 
 
-    print("""
-╔════════════════════════╗
-║      MENU DE ATAQUE    ║
-╠════════════════════════╣
-║       1. COICE         ║
-║       2. GARRAS        ║
-║      3. MORDIDA        ║
-╚════════════════════════╝
+    print(f"""
+                    ╔══════════════════════════════════════════════════╗
+    ╔═════════════  ║              ESCOLHA COMO ATACAR                 ║
+    ║    |\_/|      ╠══════════════════════════════════════════════════╣
+    ║   ( o"O )        CAPIVARA: {personagemVida}                 2º HUMANO:{inimigoVida2}        
+    ║   /\ " /\     ╠════════════════╦════════════════╦════════════════╣  
+    ║  | |\_/| |    ║                ║     _          ║   .-'V'"'V'-.  ║
+    ║  \_>---<_/    ║     /./        ║    //===-      ║    \^     ^/   ║
+    ║  (___|___)    ║    /./__       ║   ((==-        ║     \^   ^/    ║
+    ╚══════════════ ║   (____)))     ║    .\===-      ║      \^_^/     ║
+                    ║                ║                ║       ¯¯¯      ║
+                    ╠════════════════╬════════════════╬════════════════║
+                    ║   1 - COICE    ║   2 - GARRAS   ║  3 - MORDIDA   ║
+                    ╚════════════════╩════════════════╩════════════════╝
+                       
 """)
     escolha = input("""\n       Escolha um ataque:
                 """)
