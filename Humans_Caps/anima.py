@@ -1,6 +1,7 @@
 import time
 import os
 
+RED = '\033[91m'
 G = '\033[92m'
 W = "\033[1;37m"
 RESET = '\033[0m'
@@ -9,7 +10,7 @@ tempo = 0.05
 def iniciar_animacao(): # TIRO 1 CAPIVARA =========================================================
     
     os.system('cls')
-    print(f""" 
+    print(f"""{RED} 
           
           
         _/﹋\_                                                                   
@@ -155,12 +156,12 @@ def iniciar_animacao(): # TIRO 1 CAPIVARA ======================================
          |__\                                                                     ( ´.` ) /
          <;︻╦╤─                                                                   \ m /   
                                                                                     \./               
-    """)
+    {RESET}""")
 
 def iniciar_animacao2(): # TIRO ATAQUE 2 CAPIVARA ==================================================
     
     os.system('cls')
-    print(f""" 
+    print(f"""{RED} 
           
           
         _/﹋\_                                                                   
@@ -306,7 +307,7 @@ def iniciar_animacao2(): # TIRO ATAQUE 2 CAPIVARA ==============================
          |__\                                                                     ( ´.` ) /
          <;︻╦╤─                                                                   \ m /   
                                                                                     \./               
-    """)
+    {RESET}""")
 
 def iniciar_animacao3():
     
@@ -394,7 +395,6 @@ def iniciar_animacao3():
 
     time.sleep(tempo)
     os.system('cls')
-
     print("""
      _         _
     | \_.---._/ |  
@@ -410,7 +410,7 @@ def iniciar_animacao3():
 """)
     
     os.system('cls')
-    print("""
+    print(f"""
              _         _
             | \_.---._/ |       Se prepare para a batalha!
             |-'       `-|      espero que ainda tenha itens
@@ -422,7 +422,7 @@ def iniciar_animacao3():
               .\^__^//
                `-.-'
     
-""")   
+{RESET}""")   
 
 def iniciar_animacao4(): # YOU WIN =================================================================
     
@@ -494,7 +494,7 @@ def iniciar_animacao4(): # YOU WIN =============================================
           \_    _/  |  |  |  | |  |  |  |      \            /   |  | |  . `  | 
             |  |    |  `--'  | |  `--'  |       \    /\    /    |  | |  |\   | 
             |__|     \______/   \______/         \__/  \__/     |__| |__| \__|
- """)
+ {RESET}""")
     
 def iniciar_animacao5(): #COICE CAPIVARA ===========================================================
     
@@ -579,7 +579,7 @@ def iniciar_animacao5(): #COICE CAPIVARA =======================================
 def iniciar_animacao6(): # FACADA ================================================================== 
     
     os.system('cls')
-    print(f""" 
+    print(f"""{RED} 
           
           
         _/﹋\_                                                                   
@@ -706,13 +706,13 @@ def iniciar_animacao6(): # FACADA ==============================================
 
     print(f""" 
           
-                                                                                             /-----------------
-        _/﹋\_                                                                              / AI MEU CORAÇÃO! /
-        (҂`_´                                                                      /\_/.   /¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
+                                                                                             /-------------------
+        _/﹋\_                                                                              / {W}AI MEU CORAÇÃO!{RED}/
+        (҂`_´                                                                      /\_/.   /¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
          |__\                                                                     ( ´.` ) /
                                                                                    \ m /   
                                                                                     \./               
-    """)
+    {RESET}""")
 
 def iniciar_animacao7(): #MORDIDA CAPIVARA =========================================================
     
@@ -789,7 +789,7 @@ def iniciar_animacao7(): #MORDIDA CAPIVARA =====================================
 
     print(f"""{G}
                                                                                             _,-'""`-._        _/﹋\_      ________________
-                                                                                          '(       |\`-/|     (º.º҂) ----|*FUI MORDIDO!!!*|
+                                                                                          '(       |\`-/|     (º.º҂) ----|{W}*FUI MORDIDO!!!*{G}|
                                                                                           -' \ )-`( , `.´)     /__|       ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
                                                                                              `-    \`_`w/'-
                 {RESET}""")
@@ -869,7 +869,7 @@ def iniciar_animacao8(): #GARRAS CAPIVARA ======================================
 
     print(f"""{G}
                                                                                             _,-'""`-._        _/﹋\_      _____________________
-                                                                                          '(       |\`-/|     (º.º҂) ----|*VOCÊ ME ARRANHOU!!!*|
+                                                                                          '(       |\`-/|     (º.º҂) ----|{W}VOCÊ ME ARRANHOU!!!*{RED}|
                                                                                           -' \ )-`( , `.´)     /__|       ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
                                                                                              `-    \`_`w/'-
                 {RESET}""")
@@ -877,7 +877,7 @@ def iniciar_animacao8(): #GARRAS CAPIVARA ======================================
 def iniciar_animacao9(): # CHUTE 1 ==================================================
     
     os.system('cls')
-    print(f""" 
+    print(f"""{RED} 
           
           
         _/﹋\_                                                                      /\_/. 
@@ -983,16 +983,16 @@ def iniciar_animacao9(): # CHUTE 1 =============================================
     print(f""" 
           
                                                                                                /---------------------
-                                                                            _/﹋\_   /\_/.    / VAI CHUTAR A MANA!! /
+                                                                            _/﹋\_   /\_/.    / {W}VAI CHUTAR A MANA!!{RED} /
                                                                             (҂`_´   ( ´.` )  /¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
                                                                              |__\    \ M /
                                                                                       \./   
-    """)
+    {RESET}""")
 
 def iniciar_animacaoA(): # CHUTE 2 ==================================================
     
     os.system('cls')
-    print(f""" 
+    print(f"""{RED} 
           
           
         _/﹋\_                                                                      /\_/. 
@@ -1098,11 +1098,11 @@ def iniciar_animacaoA(): # CHUTE 2 =============================================
     print(f""" 
           
                                                                                                /---------------------
-                                                                            _/﹋\_   /\_/.    / ISSO VAI TER VOLTA!!/
+                                                                            _/﹋\_   /\_/.    / {W}ISSO VAI TER VOLTA!!{RED}/
                                                                             (҂`_´   ( ´.` )  /¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
                                                                              |__\    \ M /
                                                                                       \./   
-    """)
+    {RESET}""")
 
 def iniciar_animacaoB(): # FACADA 2 ================================================================== 
     
