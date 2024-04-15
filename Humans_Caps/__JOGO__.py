@@ -24,6 +24,7 @@ DKG = '\033[1;32m'
 BLUE = '\033[94m'
 BLACK = "\033[1;30m"
 WHITE = "\033[1;37m"
+BROWN = "\033[0;33m"
 TITULO =f"""\n
       {RED} __                                                   {WHITE} ___ ___  _______ {RED}                       __                                   
       {RED}|  |--..--.--..--------..---.-..-----..-----..-----.  {WHITE}|   Y   ||   _   |{RED}  .----..---.-..-----.|__|.--.--..---.-..----..---.-..-----.
@@ -210,9 +211,10 @@ def resetGame():
     global verificarMorto
 
     personagemClasse = "0" #0 = nenhuma, 1 = humano, 2 = capivara
-    personagemVida = 10
-    inimigoVida = 10
-    inimigoVida2 = 10
+    personagemVida = 30
+    inimigoVida = 30
+    inimigoVida2 = 40
+    
     turno = "0" # 0 = seu turno, 1 = turno inimigo
     pocaoCura =  1
     pocaoDano = 1
@@ -543,17 +545,17 @@ def atacar(): # HUMANO ATACA CAPIVARA 1
 
     print(f"""{BLACK}
                     ╔══════════════════════════════════════════════════╗
-    ╔═════════════  ║              ESCOLHA COMO ATACAR                 ║
-    ║{WHITE}  \///////\ {BLACK}   ╠══════════════════════════════════════════════════╣
-    ║{WHITE}  | _   _ | {BLACK}       HUMANO: {personagemVida}                    CAPIVARA:{inimigoVida}        
+    ╔═════════════  ║              {WHITE}ESCOLHA COMO ATACAR{BLACK}                 ║
+    ║{YELLOW}  \///////\ {BLACK}   ╠══════════════════════════════════════════════════╣
+    ║{WHITE}  | _   _ | {BLACK}       {WHITE}HUMANO:{RED} {personagemVida}                    {WHITE}CAPIVARA:{RED} {inimigoVida} {BLACK}        
     ║{WHITE} ( (o\ /o) ){BLACK}   ╠════════════════╦════════════════╦════════════════╣  
     ║{WHITE}  |  . .  | {BLACK}   ║{RED}    ____      {BLACK}  ║  {RED}     /| {BLACK}      ║ {RED}   _,________ {BLACK} ║
-    ║{WHITE}   \ ■■■ /  {BLACK}   ║{RED}    \  _|__   {BLACK}  ║  {RED}     || {BLACK}      ║ {RED}  _T _==____(){BLACK} ║
-    ║{WHITE}    \_▬_/   {BLACK}   ║{RED}   __)|   /   {BLACK}  ║  {RED}   __||_{BLACK}      ║ {RED} /##(_)-'     {BLACK} ║
-    ╚══════════════ ║{RED}  (___|  (__  {BLACK}  ║  {RED}   ¯¯||¯{BLACK}      ║ {RED}/##/          {BLACK} ║
+    ║{WHITE}   \ ■■■ /  {BLACK}   ║{RED}    \  _|__   {BLACK}  ║  {RED}     || {BLACK}      ║ {RED}  _T _{WHITE}=={RED}____(){BLACK} ║
+    ║{WHITE}    \_▬_/   {BLACK}   ║{RED}   __)|   /   {BLACK}  ║  {RED}   __||_{BLACK}      ║ {RED} /{WHITE}##{RED}(_)-'     {BLACK} ║
+    ╚══════════════ ║{RED}  (___|  (__  {BLACK}  ║  {RED}   ¯¯||¯{BLACK}      ║ {RED}/{WHITE}##{RED}/          {BLACK} ║
                     ║{RED}      (_-___) {BLACK}  ║  {RED}     ¯¯ {BLACK}      ║ {RED}¯¯¯           {BLACK} ║
                     ╠════════════════╬════════════════╬════════════════║
-                    ║   1 - CHUTE    ║   2 - FACA     ║    3 - ARMA    ║
+                    ║   {WHITE}1 - CHUTE{BLACK}    ║   {WHITE}2 - FACA{BLACK}     ║    {WHITE}3 - ARMA{BLACK}    ║
                     ╚════════════════╩════════════════╩════════════════╝
 {RESET}                        
 """)
@@ -586,7 +588,7 @@ def atacar(): # HUMANO ATACA CAPIVARA 1
         print("\nVocê errou!")
         print(f"""\n 
                   /---------------
-                 / SCAPS        /
+                 /    SCAPS     /
         _/﹋\_  /¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
         (҂´=`                                                              
          |__\                                                                                             
@@ -617,17 +619,17 @@ def atacarSegundoInimigo(): # HUMANO ATACA CAPIVARA MAE
     
     print(f"""{BLACK}
                     ╔══════════════════════════════════════════════════╗
-    ╔═════════════  ║              ESCOLHA COMO ATACAR                 ║
-    ║{WHITE}  \///////\ {BLACK}   ╠══════════════════════════════════════════════════╣
-    ║{WHITE}  | _   _ | {BLACK}       HUMANO: {personagemVida}                 2ª CAPIVARA:{inimigoVida2}        
+    ╔═════════════  ║              {WHITE}ESCOLHA COMO ATACAR{BLACK}                 ║
+    ║{YELLOW}  \///////\ {BLACK}   ╠══════════════════════════════════════════════════╣
+    ║{WHITE}  | _   _ | {BLACK}       {WHITE}HUMANO:{RED} {personagemVida}                    {WHITE}CAPIVARA:{RED} {inimigoVida2} {BLACK}        
     ║{WHITE} ( (o\ /o) ){BLACK}   ╠════════════════╦════════════════╦════════════════╣  
     ║{WHITE}  |  . .  | {BLACK}   ║{RED}    ____      {BLACK}  ║  {RED}     /| {BLACK}      ║ {RED}   _,________ {BLACK} ║
-    ║{WHITE}   \ ■■■ /  {BLACK}   ║{RED}    \  _|__   {BLACK}  ║  {RED}     || {BLACK}      ║ {RED}  _T _==____(){BLACK} ║
-    ║{WHITE}    \_▬_/   {BLACK}   ║{RED}   __)|   /   {BLACK}  ║  {RED}   __||_{BLACK}      ║ {RED} /##(_)-'     {BLACK} ║
-    ╚══════════════ ║{RED}  (___|  (__  {BLACK}  ║  {RED}   ¯¯||¯{BLACK}      ║ {RED}/##/          {BLACK} ║
+    ║{WHITE}   \ ■■■ /  {BLACK}   ║{RED}    \  _|__   {BLACK}  ║  {RED}     || {BLACK}      ║ {RED}  _T _{WHITE}=={RED}____(){BLACK} ║
+    ║{WHITE}    \_▬_/   {BLACK}   ║{RED}   __)|   /   {BLACK}  ║  {RED}   __||_{BLACK}      ║ {RED} /{WHITE}##{RED}(_)-'     {BLACK} ║
+    ╚══════════════ ║{RED}  (___|  (__  {BLACK}  ║  {RED}   ¯¯||¯{BLACK}      ║ {RED}/{WHITE}##{RED}/          {BLACK} ║
                     ║{RED}      (_-___) {BLACK}  ║  {RED}     ¯¯ {BLACK}      ║ {RED}¯¯¯           {BLACK} ║
                     ╠════════════════╬════════════════╬════════════════║
-                    ║   1 - CHUTE    ║   2 - FACA     ║    3 - ARMA    ║
+                    ║   {WHITE}1 - CHUTE{BLACK}    ║   {WHITE}2 - FACA{BLACK}     ║    {WHITE}3 - ARMA{BLACK}    ║
                     ╚════════════════╩════════════════╩════════════════╝
 {RESET}                        
 """)
@@ -691,19 +693,19 @@ def ataque(): # CAPIVARA CONTRA HUMANO
 
     os.system('cls') 
 
-    print(f"""
+    print(f"""{BLACK}
                     ╔══════════════════════════════════════════════════╗
-    ╔═════════════  ║              ESCOLHA COMO ATACAR                 ║
-    ║    |\_/|      ╠══════════════════════════════════════════════════╣
-    ║   ( o"O )        CAPIVARA: {personagemVida}                    HUMANO:{inimigoVida2}        
-    ║   /\ " /\     ╠════════════════╦════════════════╦════════════════╣  
-    ║  | |\_/| |    ║                ║     _          ║   .-'V'"'V'-.  ║
-    ║  \_>---<_/    ║     /./        ║    //===-      ║    \^     ^/   ║
-    ║  (___|___)    ║    /./__       ║   ((==-        ║     \^   ^/    ║
-    ╚══════════════ ║   (____)))     ║    .\===-      ║      \^_^/     ║
-                    ║                ║                ║       ¯¯¯      ║
+    ╔═════════════  ║             {WHITE} ESCOLHA COMO ATACAR{BLACK}                 ║
+    ║{WHITE}    |\_/|{BLACK}      ╠══════════════════════════════════════════════════╣
+    ║{WHITE}   ( o"O ){BLACK}        {WHITE}CAPIVARA:{RED} {personagemVida}                    {WHITE}HUMANO:{RED} {inimigoVida} {BLACK}        
+    ║{WHITE}   /\ " /\{BLACK}     ╠════════════════╦════════════════╦════════════════╣  
+    ║{WHITE}  | |\_/| |{BLACK}    ║                ║                ║{RED}   .-'{WHITE}V'"'V{RED}'-.{BLACK}  ║
+    ║{WHITE}  \_>---<_/{BLACK}    ║     {RED}/./{BLACK}        ║    {RED}//{WHITE}===-{BLACK}      ║{RED}    \{WHITE}^     ^{RED}/{BLACK}   ║
+    ║{WHITE}  (___|___){BLACK}    ║    {RED}/./__{BLACK}       ║   {RED}(({WHITE}==-{BLACK}        ║{RED}     \{WHITE}^   ^{RED}/{BLACK}    ║
+    ╚══════════════ ║   {RED}(____{WHITE}))){BLACK}     ║    {RED}.\{WHITE}===-{BLACK}      ║{RED}      \{WHITE}^_^{RED}/{BLACK}     ║
+                    ║                ║                ║{RED}       ¯¯¯{BLACK}      ║
                     ╠════════════════╬════════════════╬════════════════║
-                    ║   1 - COICE    ║   2 - GARRAS   ║  3 - MORDIDA   ║
+                    ║   {WHITE}1 - COICE{BLACK}    ║   {WHITE}2 - GARRAS{BLACK}   ║  {WHITE}3 - MORDIDA{BLACK}   ║
                     ╚════════════════╩════════════════╩════════════════╝""")
     
     escolha = input("""\n  Escolha um ataque:
@@ -733,9 +735,9 @@ def ataque(): # CAPIVARA CONTRA HUMANO
     
     if dano == 0:
         os.system('cls')
-        print("Você ERRA!")
+        print("\nVocê ERRA!")
         print("\n /\_/.")  
-        print("( ´.` )  --> EU ESTAVA BRINCANDO")
+        print("( ´.` )  --> TE PEGO NA PRÓXIMA!!")
         print(" \ w /")
         print("  \./")
 
@@ -974,22 +976,22 @@ def batalhaHumano():
         os.system('cls')
 
         if turno == "0":
-            print(f"""
+            print(f"""{BLACK}
                 
-                ╔══════════════════════════════════════════════════╗
-                ║                 ESCOLHA UMA AÇÃO                 ║
-                ╠══════════════════════════════════════════════════╣
-                    HUMANO: {personagemVida}                    CAPIVARA:{inimigoVida}        
-                ╠════════════════╦════════════════╦════════════════╣  
-                ║     ______     ║                ║        .       ║
-                ║    /../../\    ║     ,===.      ║    __O/        ║
-                ║    \-/**/-/    ║    )\ . /`     ║      /         ║
-                ║     \__/_/     ║   /  `-´  \    ║  ;__/ \        ║
-                ║      \__/      ║   \_ ___ _/    ║       |_       ║
-                ╠════════════════╬════════════════╬════════════════║
-                ║   1 - ATACAR   ║   2 - ITENS    ║   3 - FUGIR    ║
-                ╚════════════════╩════════════════╩════════════════╝
-                        """)
+              ╔══════════════════════════════════════════════════╗
+              ║                {WHITE} ESCOLHA UMA AÇÃO{BLACK}                 ║
+              ╠══════════════════════════════════════════════════╣
+                  {WHITE} HUMANO: {RED}{personagemVida}                    {WHITE} CAPIVARA:{RED}{inimigoVida}   {BLACK}     
+              ╠════════════════╦════════════════╦════════════════╣  
+              ║{RED}     ______     {BLACK}║                ║{RED}        .       {BLACK}║
+              ║{RED}    /{BLUE}../../{RED}\    {BLACK}║{BROWN}     ,===.      {BLACK}║{RED}    __O/ {BLACK}       ║
+              ║{RED}    \{BLUE}-/**/-{RED}/    {BLACK}║{BROWN}    )\ . /`     {BLACK}║{RED}      /         {BLACK}║
+              ║{RED}     \{BLUE}__/_{RED}/     {BLACK}║{BROWN}   /  `-´  \    {BLACK}║{RED}  ;__/ \        {BLACK}║
+              ║{RED}      \__/      {BLACK}║{BROWN}   \_ ___ _/    {BLACK}║{RED}       |_       {BLACK}║
+              ╠════════════════╬════════════════╬════════════════║
+              ║ {WHITE}  1 - ATACAR {BLACK}  ║ {WHITE}  2 - ITENS{BLACK}    ║{WHITE}   3 - FUGIR{BLACK}    ║
+              ╚════════════════╩════════════════╩════════════════╝
+                        {RESET}""")
             jogadorEscolha = "0"
             jogadorEscolha = opcaoBatalha()
             print(f"A escolha do jogador foi {jogadorEscolha}")
@@ -1045,34 +1047,34 @@ def batalhaHumano():
         an.iniciar_animacao4()
         input()
         os.system('cls')
-        print(f"""{DKG}
-                                    {BLACK}/¯\ /¯\ /¯\ /¯\ /¯\ /¯\ /¯\ /¯\ /¯\ /¯\.{DKG}
-                                  {BLACK}=|{WHITE} R   E   C   O   M   P   E   N   S   A {BLACK}|={DKG}
-                                    {BLACK}\_/ \_/ \_/ \_/ \_/ \_/ \_/ \_/ \_/ \_/{DKG}
+        print(f"""{BLACK}
+                                    {BLACK}/¯\ /¯\ /¯\ /¯\ /¯\ /¯\ /¯\ /¯\ /¯\ /¯\.{BLACK}
+                                  {BLACK}=|{WHITE} R   E   C   O   M   P   E   N   S   A {BLACK}|=
+                                    \_/ \_/ \_/ \_/ \_/ \_/ \_/ \_/ \_/ \_/
               
                 ╔═════════════════════════════════════════════════════════════════════════════════╗
-                ║                                                                                 ║{BLACK}══╗{DKG}
-                ║{WHITE}                       ______________       {DKG}                                     ║{BLACK}  ║{DKG} 
-                ║{WHITE}                      /    {RED} __{WHITE}      /|      {DKG}                                     ║{BLACK}  ║{DKG} 
-                ║{WHITE}                     /   {RED}__/ /_{WHITE}    / /      {DKG} _     ___                           ║{BLACK}  ║{DKG} 
-                ║{WHITE}                    /   {RED}/_  __/{WHITE}   / /      {DKG}_| |_  (__ \.                         ║{BLACK}  ║{DKG}
-                ║{WHITE}                   /     {RED}/_/{WHITE}     / /      {DKG}|_   _| / __/                          ║{BLACK}  ║{DKG}
-                ║{WHITE}                  /_____________/ /         {DKG}|_|   \___)                          ║{BLACK}  ║{DKG}
-                ║{WHITE}                 |______________|/{DKG}                                               ║{BLACK}  ║{DKG}
-                ║                                 ____________                                    ║{BLACK}  ║{DKG}
-                ║    ______________--------------|*{WHITE}KIT MÉDICO{DKG}*|--------------_________________    ║{BLACK}  ║{DKG}
-                ╠═════════════════════════════════════════════════════════════════════════════════║{BLACK}  ║{DKG}
-                ╠═════════════════════════════════════════════════════════════════════════════════║{BLACK}  ║{DKG}
-                ║   _______________----------- __________________ ----------____________________  ║{BLACK}  ║{DKG}
-                ║                             |*{WHITE}MUNIÇÃO ESPECIAL{DKG}*|                                ║{BLACK}  ║{DKG}
-                ║{RED}    _,________                                {DKG}_     _                            ║{BLACK}  ║{DKG}
-                ║{RED}   _T _==____()                             {DKG}_| |_  / |                           ║{BLACK}  ║{DKG}
-                ║{RED}   /##(_)-'   ______                       {DKG}|_   _|  ||                           ║{BLACK}  ║{DKG}
-                ║{RED}  /##/       /BALAS/|                        {DKG}|_|   |__|                          ║{BLACK}  ║{DKG}
-                ║{RED}  ¯¯¯       /_____/ /{DKG}                                                            ║{BLACK}  ║{DKG}
-                ║{RED}            |_____|/{DKG}                                                             ║{BLACK}  ║{DKG}
-                ╚═════════════════════════════════════════════════════════════════════════════════╝{BLACK}  ║{DKG}
-                   {BLACK} ╚════════════════════════════════════════════════════════════════════════════════╝{RESET}
+                ║                                                                                 ║{RED}══╗{BLACK}
+                ║{WHITE}                       ______________       {BLACK}                                     ║{RED}  ║{BLACK} 
+                ║{WHITE}                      /    {RED} __{WHITE}      /|      {BLACK}                                     ║{RED}  ║{BLACK} 
+                ║{WHITE}                     /   {RED}__/ /_{WHITE}    / /      {RED} _     ___{BLACK}                           ║{RED}  ║{BLACK} 
+                ║{WHITE}                    /   {RED}/_  __/{WHITE}   / /      {RED}_| |_  (__ \.{BLACK}                         ║{RED}  ║{BLACK}
+                ║{WHITE}                   /     {RED}/_/{WHITE}     / /      {RED}|_   _| / __/{BLACK}                          ║{RED}  ║{BLACK}
+                ║{WHITE}                  /_____________/ /         {RED}|_|   \___){BLACK}                          ║{RED}  ║{BLACK}
+                ║{WHITE}                 |______________|/{BLACK}                                               ║{RED}  ║{BLACK}
+                ║                                 ____________                                    ║{RED}  ║{BLACK}
+                ║    ______________--------------|*{WHITE}KIT MÉDICO{BLACK}*|--------------_________________    ║{RED}  ║{BLACK}
+                ╠═════════════════════════════════════════════════════════════════════════════════║{RED}  ║{BLACK}
+                ╠═════════════════════════════════════════════════════════════════════════════════║{RED}  ║{BLACK}
+                ║   _______________----------- __________________ ----------____________________  ║{RED}  ║{BLACK}
+                ║                             |*{WHITE}MUNIÇÃO ESPECIAL{BLACK}*|                                ║{RED}  ║{BLACK}
+                ║{RED}    _,________                                _     _{BLACK}                            ║{RED}  ║{BLACK}
+                ║{RED}   _T _==____()                             _| |_  / |{BLACK}                           ║{RED}  ║{BLACK}
+                ║{RED}   /##(_)-'   ______                       |_   _|  ||{BLACK}                           ║{RED}  ║{BLACK}
+                ║{RED}  /##/       /BALAS/|                        |_|   |__|{BLACK}                          ║{RED}  ║{BLACK}
+                ║{RED}  ¯¯¯       /_____/ /{BLACK}                                                            ║{RED}  ║{BLACK}
+                ║{RED}            |_____|/{BLACK}                                                             ║{RED}  ║{BLACK}
+                ╚═════════════════════════════════════════════════════════════════════════════════╝{RED}  ║{BLACK}
+                   {RED} ╚════════════════════════════════════════════════════════════════════════════════╝{RESET}
 """)
         input()
     
@@ -1115,21 +1117,22 @@ def batalhaHumano():
         os.system('cls')
 
         if turno == "0":
-            print(f"""
-                                            ╔══════════════════════════════════════════════════╗
-                                            ║                 ESCOLHA UMA AÇÃO                 ║
-                                            ╠══════════════════════════════════════════════════╣
-                                                HUMANO: {personagemVida}                2ª CAPIVARA:{inimigoVida2}        
-                                            ╠════════════════╦════════════════╦════════════════╣  
-                                            ║     ______     ║                ║        .       ║
-                                            ║    /../../\    ║     ,===.      ║    __O/        ║
-                                            ║    \-/**/-/    ║    )\ . /`     ║      /         ║
-                                            ║     \__/_/     ║   /  `-´  \    ║  ;__/ \        ║
-                                            ║      \__/      ║   \_ ___ _/    ║       |_       ║
-                                            ╠════════════════╬════════════════╬════════════════║
-                                            ║   1 - ATACAR   ║   2 - ITENS    ║   3 - FUGIR    ║
-                                            ╚════════════════╩════════════════╩════════════════╝
-                        """)
+            print(f"""{BLACK}
+                
+              ╔══════════════════════════════════════════════════╗
+              ║                {WHITE} ESCOLHA UMA AÇÃO{BLACK}                 ║
+              ╠══════════════════════════════════════════════════╣
+                  {WHITE} HUMANO: {RED}{personagemVida}                    {WHITE} CAPIVARA:{RED}{inimigoVida2}   {BLACK}     
+              ╠════════════════╦════════════════╦════════════════╣  
+              ║{RED}     ______     {BLACK}║                ║{RED}        .       {BLACK}║
+              ║{RED}    /{BLUE}../../{RED}\    {BLACK}║{BROWN}     ,===.      {BLACK}║{RED}    __O/ {BLACK}       ║
+              ║{RED}    \{BLUE}-/**/-{RED}/    {BLACK}║{BROWN}    )\ . /`     {BLACK}║{RED}      /         {BLACK}║
+              ║{RED}     \{BLUE}__/_{RED}/     {BLACK}║{BROWN}   /  `-´  \    {BLACK}║{RED}  ;__/ \        {BLACK}║
+              ║{RED}      \__/      {BLACK}║{BROWN}   \_ ___ _/    {BLACK}║{RED}       |_       {BLACK}║
+              ╠════════════════╬════════════════╬════════════════║
+              ║ {WHITE}  1 - ATACAR {BLACK}  ║ {WHITE}  2 - ITENS{BLACK}    ║{WHITE}   3 - FUGIR{BLACK}    ║
+              ╚════════════════╩════════════════╩════════════════╝
+                        {RESET}""")
             
             jogadorEscolha = "0"
             jogadorEscolha = opcaoBatalha()
@@ -1176,22 +1179,20 @@ def atacarSegundohumano(): # ATACAR O SEGUNDO HUMANO
 
     os.system('cls') # LIMPA TELA
 
-    print(f"""
+    print(f"""{BLACK}
                     ╔══════════════════════════════════════════════════╗
-    ╔═════════════  ║              ESCOLHA COMO ATACAR                 ║
-    ║    |\_/|      ╠══════════════════════════════════════════════════╣
-    ║   ( o"O )        CAPIVARA: {personagemVida}                 2º HUMANO:{inimigoVida2}        
-    ║   /\ " /\     ╠════════════════╦════════════════╦════════════════╣  
-    ║  | |\_/| |    ║                ║     _          ║   .-'V'"'V'-.  ║
-    ║  \_>---<_/    ║     /./        ║    //===-      ║    \^     ^/   ║
-    ║  (___|___)    ║    /./__       ║   ((==-        ║     \^   ^/    ║
-    ╚══════════════ ║   (____)))     ║    .\===-      ║      \^_^/     ║
-                    ║                ║                ║       ¯¯¯      ║
+    ╔═════════════  ║             {WHITE} ESCOLHA COMO ATACAR{BLACK}                 ║
+    ║{WHITE}    |\_/|{BLACK}      ╠══════════════════════════════════════════════════╣
+    ║{WHITE}   ( o"O ){BLACK}        {WHITE}CAPIVARA:{RED} {personagemVida}                    {WHITE}HUMANO:{RED} {inimigoVida2} {BLACK}        
+    ║{WHITE}   /\ " /\{BLACK}     ╠════════════════╦════════════════╦════════════════╣  
+    ║{WHITE}  | |\_/| |{BLACK}    ║                ║                ║{RED}   .-'{WHITE}V'"'V{RED}'-.{BLACK}  ║
+    ║{WHITE}  \_>---<_/{BLACK}    ║     {RED}/./{BLACK}        ║    {RED}//{WHITE}===-{BLACK}      ║{RED}    \{WHITE}^     ^{RED}/{BLACK}   ║
+    ║{WHITE}  (___|___){BLACK}    ║    {RED}/./__{BLACK}       ║   {RED}(({WHITE}==-{BLACK}        ║{RED}     \{WHITE}^   ^{RED}/{BLACK}    ║
+    ╚══════════════ ║   {RED}(____{WHITE}))){BLACK}     ║    {RED}.\{WHITE}===-{BLACK}      ║{RED}      \{WHITE}^_^{RED}/{BLACK}     ║
+                    ║                ║                ║{RED}       ¯¯¯{BLACK}      ║
                     ╠════════════════╬════════════════╬════════════════║
-                    ║   1 - COICE    ║   2 - GARRAS   ║  3 - MORDIDA   ║
-                    ╚════════════════╩════════════════╩════════════════╝
-                       
-""")
+                    ║   {WHITE}1 - COICE{BLACK}    ║   {WHITE}2 - GARRAS{BLACK}   ║  {WHITE}3 - MORDIDA{BLACK}   ║
+                    ╚════════════════╩════════════════╩════════════════╝""")
     escolha = input("""\n       Escolha um ataque:
                 """)
 
@@ -1228,7 +1229,7 @@ def atacarSegundohumano(): # ATACAR O SEGUNDO HUMANO
     verificarDanoExtra()
 
     print(f"\nSua vida: {personagemVida}")
-    print(f"Vida inimiga: {inimigoVida}")
+    print(f"Vida inimiga: {inimigoVida2}")
     gameOverCheck()
     vencedor()
     input("Pressione Enter para continuar...")
@@ -1251,22 +1252,22 @@ def batalhaCapivara():
         os.system('cls')
 
         if turno == "0":
-            print(f"""
+            print(f"""{WHITE}
                                                    ___ 
                                                 .="   "=._.---. 
                                              ."         c ` Y ´p
                                             /   ,       `.  W_/ 
                                            |   '-.   /     /  
                                         .._|      )_-\ \_=.\.
-                                            \.'`----)))`=-'"`'"
+                                            \.'`----)))`=-'"`'"{BLACK}
                         ╔═══════════════════════════════════════════════════════╗
-                        ║                          LIFE                         ║
+                        ║                          {WHITE}LIFE{BLACK}                         ║
                         ╠═══════════════════════════════════════════════════════╣
-                            CAPIVARA: {personagemVida}                         HUMANO:{inimigoVida}        
+                            {WHITE}CAPIVARA:{RED} {personagemVida}                         {WHITE}HUMANO:{RED} {inimigoVida} {BLACK}        
                         ╠═══════════════════════════════════════════════════════╣
-                        ║     1 - ATACAR     2 - USAR ITEM     3 - FUGIR        ║
+                        ║  {WHITE}   1 - ATACAR     2 - USAR ITEM     3 - FUGIR{BLACK}        ║
                         ╚═══════════════════════════════════════════════════════╝
-""")
+{RESET}""")
             jogadorEscolha = "0"
             jogadorEscolha = opcaoBatalha()
             print(f"A escolha do jogador foi {jogadorEscolha}")
@@ -1312,25 +1313,25 @@ def batalhaCapivara():
                                 ║                                               ║{YELLOW}══╗{BLACK}
                                 ║                                               ║{YELLOW}  ║{BLACK} 
                                 ║                                               ║{YELLOW}  ║{BLACK} 
-                                ║            .-"'"-.               _     ___    ║{YELLOW}  ║{BLACK}
-                                ║           /* * * *\            _| |_  (__ \.  ║{YELLOW}  ║{BLACK}
-                                ║          :_.-:`:-._;          |_   _| / __/   ║{YELLOW}  ║{BLACK}
-                                ║              (_)                |_|   \___)   ║{YELLOW}  ║{BLACK}
-                                ║           \|/(_)\|/                           ║{YELLOW}  ║{BLACK}
+                                ║            {BROWN}.-"'"-.               _     ___{BLACK}    ║{YELLOW}  ║{BLACK}
+                                ║           {BROWN}/{BLUE}* * * *{BROWN}\            _| |_  (__ \.{BLACK}  ║{YELLOW}  ║{BLACK}
+                                ║          {BROWN}:_.-:`:-._;          |_   _| / __/{BLACK}   ║{YELLOW}  ║{BLACK}
+                                ║              {BROWN}(_)                |_|   \___){BLACK}   ║{YELLOW}  ║{BLACK}
+                                ║           {DKG}\|/{BROWN}(_){DKG}\|/{BLACK}                           ║{YELLOW}  ║{BLACK}
                                 ║                                               ║{YELLOW}  ║{BLACK}
-                                ║     _______-----|*COGUMELOS*|-----_______     ║{YELLOW}  ║{BLACK}
+                                ║     _______-----|*{WHITE}COGUMELOS{BLACK}*|-----_______     ║{YELLOW}  ║{BLACK}
                                 ╠═══════════════════════════════════════════════║{YELLOW}  ║{BLACK}
                                 ╠═══════════════════════════════════════════════║{YELLOW}  ║{BLACK}
-                                ║     _____----|*MUNIÇÃO ESPECIAL*|----____     ║{YELLOW}  ║{BLACK}
+                                ║     _____----|*{WHITE}PEDRA AFIA DENTE{BLACK}*|----____     ║{YELLOW}  ║{BLACK}
                                 ║                                               ║{YELLOW}  ║{BLACK}
-                                ║             ______               _     _      ║{YELLOW}  ║{BLACK}
-                                ║            /      \            _| |_  / |     ║{YELLOW}  ║{BLACK}
-                                ║           /        \          |_   _|  ||     ║{YELLOW}  ║{BLACK}
-                                ║           \        /            |_|   |__|    ║{YELLOW}  ║{BLACK}
-                                ║            \______/                           ║{YELLOW}  ║{BLACK}
+                                ║             {BROWN}______               _     _ {BLACK}     ║{YELLOW}  ║{BLACK}
+                                ║            {BROWN}/######\            _| |_  / |{BLACK}     ║{YELLOW}  ║{BLACK}
+                                ║           {BROWN}/########\          |_   _|  ||{BLACK}     ║{YELLOW}  ║{BLACK}
+                                ║           {BROWN}\********/            |_|   |__|{BLACK}    ║{YELLOW}  ║{BLACK}
+                                ║            {BROWN}\______/ {BLACK}                          ║{YELLOW}  ║{BLACK}
                                 ║                                               ║{YELLOW}  ║{BLACK}
                                 ╚═══════════════════════════════════════════════╝{YELLOW}  ║{BLACK}
-                                      {YELLOW}╚══════════════════════════════════════════════╝{RESET}
+                                    {YELLOW}╚══════════════════════════════════════════════╝{RESET}
 """)
         pocaoCura = pocaoCura + 2
         pocaoDano = pocaoDano + 1
@@ -1368,22 +1369,22 @@ L______________||O-----------------\   |____/_\ /
         os.system('cls')
 
         if turno == "0":
-            print(f"""
+            print(f"""{WHITE}
                                                    ___ 
                                                 .="   "=._.---. 
                                              ."         c ` Y ´p
                                             /   ,       `.  W_/ 
                                            |   '-.   /     /  
                                         .._|      )_-\ \_=.\.
-                                            \.'`----)))`=-'"`'"
+                                            \.'`----)))`=-'"`'"{BLACK}
                         ╔═══════════════════════════════════════════════════════╗
-                        ║                          LIFE                         ║
+                        ║                          {WHITE}LIFE{BLACK}                         ║
                         ╠═══════════════════════════════════════════════════════╣
-                            CAPIVARA: {personagemVida}                      2º HUMANO:{inimigoVida2}        
+                            {WHITE}CAPIVARA:{RED} {personagemVida}                         {WHITE}HUMANO:{RED} {inimigoVida2} {BLACK}        
                         ╠═══════════════════════════════════════════════════════╣
-                        ║     1 - ATACAR     2 - USAR ITEM     3 - FUGIR        ║
+                        ║  {WHITE}   1 - ATACAR     2 - USAR ITEM     3 - FUGIR{BLACK}        ║
                         ╚═══════════════════════════════════════════════════════╝
-""")
+{RESET}""")
             
             jogadorEscolha = "0"
             jogadorEscolha = opcaoBatalha()
