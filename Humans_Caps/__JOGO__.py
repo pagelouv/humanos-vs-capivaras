@@ -94,6 +94,7 @@ def menu():
 
     while i != "2":
         
+        
                             
         print("""\n
  __| |________________________________________________________________________________________________________________________| |__
@@ -241,9 +242,9 @@ def resetGame():
     global verificarMorto
 
     personagemClasse = "0" #0 = nenhuma, 1 = humano, 2 = capivara
-    personagemVida = 15
-    inimigoVida = 5
-    inimigoVida2 = 5
+    personagemVida = 10
+    inimigoVida = 10
+    inimigoVida2 = 15
     
     turno = "0" # 0 = seu turno, 1 = turno inimigo
     pocaoCura =  1
@@ -260,6 +261,7 @@ def gameOverCheck():
 
     if personagemVida <= 0:
         if personagemClasse =="2":
+            input("")
             os.system('cls')
             print(f"""\n\n{DKG} 
                              __{BLACK} ..--''``---....___   _..._    {DKG}__
@@ -287,6 +289,7 @@ def gameOverCheck():
             else:
                 quit() 
         else:
+            input("")
             os.system('cls')
         
             print(f"""                     ______________________
@@ -1063,7 +1066,7 @@ def batalhaHumano():
 
         if turno == "1" and inimigoVida > 0:
             os.system('cls')
-            print("""
+            print(f"""{RED}
 >>==========================================================================<<
 ||    _  _____  _    ___  _   _ _____   ___ _   _ ___ __  __ ___ ____  ___  ||
 ||   / \|_   _|/ \  / _ \| | | | ____| |_ _| \ | |_ _|  \/  |_ _/ ___|/ _ \ ||
@@ -1071,7 +1074,7 @@ def batalhaHumano():
 || / ___ \| |/ ___ \ |_| | |_| | |___   | || |\  || || |  | || | |_| | |_| |||
 ||/_/   \_\_/_/   \_\__\_\ ___/|_____| |___|_| \_|___|_|  |_|___\____|\___/ ||
 >>==========================================================================<<
-""")
+{RESET}""")
             input()
             turnoInimigo()
             turno = "0"
@@ -1210,15 +1213,15 @@ def batalhaHumano():
 
         if turno == "1" and inimigoVida2 > 0:
             os.system('cls')
-            print("""
+            print(f"""{RED}
 >>==========================================================================<<
 ||    _  _____  _    ___  _   _ _____   ___ _   _ ___ __  __ ___ ____  ___  ||
 ||   / \|_   _|/ \  / _ \| | | | ____| |_ _| \ | |_ _|  \/  |_ _/ ___|/ _ \ ||
 ||  / _ \ | | / _ \| | | | | | |  _|    | ||  \| || || |\/| || | |  _| | | |||
 || / ___ \| |/ ___ \ |_| | |_| | |___   | || |\  || || |  | || | |_| | |_| |||
-||/_/   \_\_/_/   \_\__\_\____/|_____| |___|_| \_|___|_|  |_|___\____|\___/ ||
+||/_/   \_\_/_/   \_\__\_\ ___/|_____| |___|_| \_|___|_|  |_|___\____|\___/ ||
 >>==========================================================================<<
-""")
+{RESET}""")
             input()
             turnoSegundoInimigo()
             turno = "0"
@@ -1349,15 +1352,15 @@ def batalhaCapivara():
 
         if turno == "1" and inimigoVida > 0:
             os.system('cls')
-            print("""
+            print(f"""{RED}
 >>==========================================================================<<
 ||    _  _____  _    ___  _   _ _____   ___ _   _ ___ __  __ ___ ____  ___  ||
 ||   / \|_   _|/ \  / _ \| | | | ____| |_ _| \ | |_ _|  \/  |_ _/ ___|/ _ \ ||
 ||  / _ \ | | / _ \| | | | | | |  _|    | ||  \| || || |\/| || | |  _| | | |||
 || / ___ \| |/ ___ \ |_| | |_| | |___   | || |\  || || |  | || | |_| | |_| |||
-||/_/   \_\_/_/   \_\__\_\____/|_____| |___|_| \_|___|_|  |_|___\____|\___/ ||
+||/_/   \_\_/_/   \_\__\_\ ___/|_____| |___|_| \_|___|_|  |_|___\____|\___/ ||
 >>==========================================================================<<
-""")
+{RESET}""")
             input()
             turnoInimigo()
             turno = "0"
@@ -1492,21 +1495,22 @@ def batalhaCapivara():
 
         if turno == "1" and inimigoVida2 > 0:
             os.system('cls')
-            print("""
+            print(f"""{RED}
 >>==========================================================================<<
 ||    _  _____  _    ___  _   _ _____   ___ _   _ ___ __  __ ___ ____  ___  ||
 ||   / \|_   _|/ \  / _ \| | | | ____| |_ _| \ | |_ _|  \/  |_ _/ ___|/ _ \ ||
 ||  / _ \ | | / _ \| | | | | | |  _|    | ||  \| || || |\/| || | |  _| | | |||
 || / ___ \| |/ ___ \ |_| | |_| | |___   | || |\  || || |  | || | |_| | |_| |||
-||/_/   \_\_/_/   \_\__\_\____/|_____| |___|_| \_|___|_|  |_|___\____|\___/ ||
+||/_/   \_\_/_/   \_\__\_\ ___/|_____| |___|_| \_|___|_|  |_|___\____|\___/ ||
 >>==========================================================================<<
-""")
+{RESET}""")
             input()
             turnoSegundoInimigo()
             turno = "0"
 
         contarTurno = contarTurno + 1
         vencedor()
+        gameOverCheck()
 
 
     print(f"Total de turnos: {contarTurno}")
@@ -1533,8 +1537,11 @@ def startJogo():
 #ZEROU O JOGO ===========================
 def vencedor():
     if personagemClasse == "2" and inimigoVida2 <= 0:
+        input("")
         os.system('cls')
         an.iniciar_animacao4()
+        input("")
+        os.system('cls')
         print(F"""{BLUE}
                          _____                _ 
                         |  __ \              | |       // 
@@ -1545,10 +1552,17 @@ def vencedor():
               
                         {WHITE}VOCÊ DERROTOU OS HUMANOS!
                                                   {BLACK}POR ENQUANTO....
- """)
+ {RESET}""")
+        print("""\n\n   
+                                CREATED BY HUMANS:
+                    
+                                 JEAN J DA SILVA
+                                    DIOGO B.S
+                                THIAGO POLTRONIERI  
+                                    """)
         apanhar_novamente = input("""
-                                      DESEJA JOGAR NOVAMENTE?
-                                      1 - SIM        2 - NÃO
+                              DESEJA JOGAR NOVAMENTE?
+                              1 - SIM        2 - NÃO
                                                 """)
         if apanhar_novamente =="1":
                 resetGame()
@@ -1557,8 +1571,11 @@ def vencedor():
                 quit()
         
     if personagemClasse == "1" and inimigoVida2 <= 0:
+        input("")
         os.system('cls')
         an.iniciar_animacao4()
+        input("")
+        os.system('cls')
         print(F"""{BLUE}
                          _____                _ 
                         |  __ \              | |       // 
@@ -1570,9 +1587,17 @@ def vencedor():
                         {WHITE}VOCÊ DERROTOU AS CAPIVARAS!
                                                           {BLACK}POR ENQUANTO....
  """)
+        
+        print("""\n\n   
+                                CREATED BY HUMANS:
+                    
+                                 JEAN J DA SILVA
+                                    DIOGO B.S
+                                THIAGO POLTRONIERI  
+                                    """)
         apanhar_novamente = input("""
-                                      DESEJA JOGAR NOVAMENTE?
-                                      1 - SIM        2 - NÃO
+                              DESEJA JOGAR NOVAMENTE?
+                              1 - SIM        2 - NÃO
                                                 """)
         if apanhar_novamente =="1":
                 resetGame()
