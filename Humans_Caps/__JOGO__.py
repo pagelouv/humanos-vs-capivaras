@@ -713,15 +713,14 @@ def atacarSegundoInimigo(): # HUMANO ATACA CAPIVARA MAE
     
     if dano == 0:
         os.system('cls')
-        print("\nVOCÊ ERROU")
-        print(f""" 
+        print("\nVocê errou!")
+        print(f"""\n{YELLOW} 
                   /---------------
-                 /  OPS!!       /
-        _/﹋\_  /¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯                                                       
-        (҂´=`                                                            
-         |__\                                                                       
-                                                                                        
-    """)
+                 /    {WHITE}OPSSS{YELLOW}     /
+        _/﹋\_  /¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
+        (҂´=`                                                              
+         |__\                                                                                             
+    {RESET}""")
 
     inimigoVida2 -= dano
 
@@ -1557,7 +1556,7 @@ def vencedor():
                                 CREATED BY HUMANS:
                     
                                  JEAN J DA SILVA
-                                    DIOGO B.S
+                              DIOGO BRANCHER SCHMITT
                                 THIAGO POLTRONIERI  
                                     """)
         apanhar_novamente = input("""
@@ -1592,7 +1591,7 @@ def vencedor():
                                 CREATED BY HUMANS:
                     
                                  JEAN J DA SILVA
-                                    DIOGO B.S
+                              DIOGO BRANCHER SCHMITT
                                 THIAGO POLTRONIERI  
                                     """)
         apanhar_novamente = input("""
