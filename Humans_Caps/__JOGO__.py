@@ -7,8 +7,8 @@ import anima as an
 # VARIÁVEIS GLOBAIS: =================================================================================
 
 personagemClasse = "0" #0 = nenhuma, 1 = humano, 2 = capivara
-personagemVida = 50
-inimigoVida = 50
+personagemVida = 10
+inimigoVida = 10
 turno = "0" # 0 = seu turno, 1 = turno inimigo
 pocaoCura =  1
 pocaoDano = 1
@@ -69,7 +69,20 @@ texto4 = """
                         
                     PREPARE-SE PARA SENTIR MUITA, MAS MUITA DOR!
 """
-velo = 0.002
+texto5 = """
+                                ISTO NÃO É O FINAL
+                        
+                        VOCÊS CAPIVARAS IRÃO TODAS VIRAR 
+                            
+                                    BOLINHO
+"""
+texto6 = f"""{RED}
+                             CHEGA DE BRINCADEIRAS!!      
+
+                      HORA DE EXPLODIR ALGUMAS CABEÇAS!!!!
+                      COSTELA ASSADA NÃO VAI SER NADA MAL!
+{RESET}"""
+velo = 0.005 # VELOCIDADE DOS TEXTOS
 
 # MENU: =================================================================================
 def menu():
@@ -80,6 +93,7 @@ def menu():
     os.system('cls')
 
     while i != "2":
+        
                             
         print("""\n
  __| |________________________________________________________________________________________________________________________| |__
@@ -90,7 +104,7 @@ def menu():
  __| |________________________________________________________________________________________________________________________| |__
 (__   ________________________________________________________________________________________________________________________   __)
    | |                                                                                                                        | |""")
-        input("...")
+        input("\n...")
         os.system('cls')
         titulo()
         print(f"""{BLACK}                 
@@ -113,7 +127,7 @@ def menu():
         print(F"""{DKG}
                                     __)__)__)__)__)__)__)__)__)__)__)__)__)__)__)__)__)__)__)__)__)__)
                                   |(  (  (  (  (  (  (  (  (  (  (  (  (  (  (  (  (  (  (  (  (  (   |
-                                  |                1 - JOGAR  2 - INSTRUÇÕES  3 - SAIR                |__
+                                  |  {WHITE}             1 - JOGAR  {RED}<-{WHITE} SELECIONE{RED} ->{WHITE}  2 - SAIR{DKG}                |__
                                   |___________________________________________________________________| x|
                                      |___________________________________________________________________|                                                                    
 
@@ -155,7 +169,7 @@ def titulo():
     for letra in TITULO:
         sys.stdout.write(letra)
         sys.stdout.flush()
-        time.sleep(velo)
+        time.sleep(0.002)
 
     print()
 
@@ -196,6 +210,22 @@ def ler_texto4():
         sys.stdout.flush()
         time.sleep(velo)
     print()
+def ler_texto5():
+    global texto5
+
+    for letra in texto5:
+        sys.stdout.write(letra)
+        sys.stdout.flush()
+        time.sleep(velo)
+    print()
+def ler_texto6():
+    global texto6
+
+    for letra in texto6:
+        sys.stdout.write(letra)
+        sys.stdout.flush()
+        time.sleep(velo)
+    print()
 
 # RESETAR JOGO: =================================================================================
 def resetGame():
@@ -211,9 +241,9 @@ def resetGame():
     global verificarMorto
 
     personagemClasse = "0" #0 = nenhuma, 1 = humano, 2 = capivara
-    personagemVida = 30
-    inimigoVida = 30
-    inimigoVida2 = 40
+    personagemVida = 15
+    inimigoVida = 5
+    inimigoVida2 = 5
     
     turno = "0" # 0 = seu turno, 1 = turno inimigo
     pocaoCura =  1
@@ -231,7 +261,7 @@ def gameOverCheck():
     if personagemVida <= 0:
         if personagemClasse =="2":
             os.system('cls')
-            print(f"""{DKG} 
+            print(f"""\n\n{DKG} 
                              __{BLACK} ..--''``---....___   _..._    {DKG}__
                       /// //{BLACK}_.-'    .-/";  `        ``<._  ``.''_ `.{DKG} / // /
                     ///{BLACK}_.-' _..--.'X    \                    |{DKG} // //
@@ -246,9 +276,20 @@ def gameOverCheck():
   
   
 {RESET}""")
+            apanhar_novamente = input("""
+                                      DESEJA APANHAR NOVAMENTE?
+                                      1 - SIM        2 - NÃO
+                                                """)
+            
+            if apanhar_novamente =="1":
+                resetGame()
+                startJogo()
+            else:
+                quit() 
         else:
+            os.system('cls')
         
-             print(f"""                     ______________________
+            print(f"""                     ______________________
          ____,      /,  MALDITAS CAPIVARAS )
        __)____)__  //  *------------------*              
          / # o    //             {RED}       ______     ______     __    __     ______     {RESET}
@@ -271,15 +312,23 @@ def gameOverCheck():
 
 
 """)
-             print(f"Você sobreviveu {contarTurno} turnos!")
-             print("")
-             input("Pressione para sair...")
-             quit()
+            apanhar_novamente = input("""
+                                      DESEJA APANHAR NOVAMENTE?
+                                      1 - SIM        2 - NÃO
+                                                """)
+            if apanhar_novamente =="1":
+                resetGame()
+                startJogo()
+            else:
+                quit() 
 
 # SELECIONAR CLASSE DO PERSONAGEM: =================================================================================
 def selecionarClasse():
     
     global personagemClasse
+
+
+    os.system('cls')
 
     print(YELLOW +"""\n\n
  ____ __  __  _____   _____    __ _____    _  _  _____  __ __ _____    _____ _____   __ _____ __ __  __ _  _ 
@@ -309,8 +358,8 @@ def selecionarClasse():
         os.system('cls')
         print(f"""{GREEN}
                      ╔═════════════════════════════════════════════════╗
-                     ║[0]{WHITE}                     ______                {GREEN}[0]║═══════════════════════════════════════════════════════╗
-                     ║ |{WHITE}                     <((((((\.\.             {GREEN}| ║  =====================================================║
+                     ║[0]{WHITE}                     {YELLOW}______                {GREEN}[0]║═══════════════════════════════════════════════════════╗
+                     ║ |{WHITE}                     {YELLOW}<((((((\.\.             {GREEN}| ║  =====================================================║
                      ║ |{WHITE}                     /      . ]\.            {GREEN}| ║   {RED}.__ {GREEN}                                       =========║    
                      ║ |{WHITE}                     ;--..--._|]             {GREEN}| ║   {RED}|  |__   __ __   _____  _____     ____    ____{GREEN} =====║
                      ║ |{WHITE} (.\                 '--/\--'  )             {GREEN}| ║   {RED}|  |  \ |  |  \ /     \ \__  \   /    \  /  _ \.{GREEN}====║
@@ -371,8 +420,8 @@ def selecionarClasse():
         os.system('cls')
         print(f"""{RED}                 
                 ╔═════════════════════════════════════════════════╗
-                ║[0]{WHITE}                      ______               {RED}[0]║
-                ║ |{WHITE}                     <((((((\.\.             {RED}| ║ 
+                ║[0]{WHITE}                      {YELLOW}______               {RED}[0]║
+                ║ |{WHITE}                     {YELLOW}<((((((\.\.             {RED}| ║ 
                 ║ |{WHITE}                     /      . ]\.            {RED}| ║  
                 ║ |{WHITE}                     ;--..--._|]             {RED}| ║
                 ║ |{WHITE} (.\                 '--/\--'  )             {RED}| ║   
@@ -586,13 +635,13 @@ def atacar(): # HUMANO ATACA CAPIVARA 1
     if dano == 0:
         os.system('cls')
         print("\nVocê errou!")
-        print(f"""\n 
+        print(f"""\n{YELLOW} 
                   /---------------
-                 /    SCAPS     /
+                 /    {WHITE}SCAPS{YELLOW}     /
         _/﹋\_  /¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
         (҂´=`                                                              
          |__\                                                                                             
-    """)
+    {RESET}""")
 
 
     inimigoVida -= dano
@@ -809,21 +858,21 @@ def ItemCapivara():
     global danoExtra
 
     os.system('cls')
-    print(f"""
+    print(f"""{BLACK}
   _____________________________________
  /                                     \  ════════════════════════════════════════════════╗
-|    ╔═════════════════════════════╗    |  ___                      _    __       _        ══
-|    ║                             ║    | |_ _|_ ____   _____ _ __ | |_ /_/_ _ __(_) ___   ═══
-|    ║============|\_/|=           ║    |  | || '_ \ \ / / _ \ '_ \| __/ _` | '__| |/ _ \. ════
-|    ║##########=( o"O )=          ║    |  | || | | \ V /  __/ | | | || (_| | |  | | (_) | ════
-|    ║===========/\ " /\===========║    | |___|_| |_|\_/ \___|_| |_|\__\__,_|_|  |_|\___/  ═══
+|    ╔═════════════════════════════╗    |{BLUE}  ___                      _    __       _        {BLACK}══
+|    ║                             ║    |{BLUE} |_ _|_ ____   _____ _ __ | |_ /_/_ _ __(_) ___   {BLACK}═══
+|    ║============|\_/|=           ║    |{BLUE}  | || '_ \ \ / / _ \ '_ \| __/ _` | '__| |/ _ \. {BLACK}════
+|    ║##########=( o"O )=          ║    |{BLUE}  | || | | \ V /  __/ | | | || (_| | |  | | (_) | {BLACK}════
+|    ║===========/\ " /\===========║    |{BLUE} |___|_| |_|\_/ \___|_| |_|\__\__,_|_|  |_|\___/  {BLACK}═══
 |    ║         =| |\_/| |=#########║    |                                                  ══
 |    ║         =\_>---<_/==========║    |  ═══════════════════════════════════════════════╝
-|    ║          (___|___)          ║    |  ════          1 - COGUMELOS! (+5HP): {pocaoCura}          ══
-|    ╚═════════════════════════════╝    |  ═══  2- Pedra de afiar dente (+2 Dano): {pocaoDano}       ══
- \_____________________________________/   ════           3 - Voltar                       ══
+|    ║          (___|___)          ║    |  ════         {WHITE} 1 - COGUMELOS! (+5HP):{BLUE} {pocaoCura}{BLACK}          ══
+|    ╚═════════════════════════════╝    |  ═══  {WHITE}2- Pedra de afiar dente (+2 Dano):{BLUE} {pocaoDano}{BLACK}       ══
+ \_____________________________________/   ════           {WHITE}3 - Voltar                      {BLACK} ══
                                            ═══════════════════════════════════════════════╝
-""")
+{RESET} """)
     
     print("\n=============================================================================")
     print("\n      Selecione uma opção...")
@@ -879,22 +928,22 @@ def usarItem():
     global danoExtra
 
     os.system('cls')
-    print(f"""
+    print(f"""{BLACK}
   _____________________________________
  /                                     \  ════════════════════════════════════════════════╗
-|    ╔═════════════════════════════╗    |  ___                      _    __       _        ══
-|    ║                             ║    | |_ _|_ ____   _____ _ __ | |_ /_/_ _ __(_) ___   ═══
-|    ║==========\///////\          ║    |  | || '_ \ \ / / _ \ '_ \| __/ _` | '__| |/ _ \. ════
-|    ║          | _   _ |          ║    |  | || | | \ V /  __/ | | | || (_| | |  | | (_) | ════
-|    ║=========( (o) (o) )=========║    | |___|_| |_|\_/ \___|_| |_|\__\__,_|_|  |_|\___/  ═══
-|    ║          |  . .  |          ║    |                                                  ══
-|    ║           \  _  /===========║    |  ═══════════════════════════════════════════════╝
-|    ║            \___/            ║    |  ══          1 - KIT MÈDICO! (+5HP): {pocaoCura}           ══
-|    ╚═════════════════════════════╝    |  ══  2- MUNIÇÃO EXPLOSIVA (+2 Dano): {pocaoDano}           ══
- \_____________________________________/   ══           3 - Voltar                         ══
-   |______________________________O__|     ═══════════════════════════════════════════════╝
+|    ╔═════════════════════════════╗    |{RED}  ___                      _    __       _        {BLACK}══
+|    ║                             ║    |{RED} |_ _|_ ____   _____ _ __ | |_ /_/_ _ __(_) ___   {BLACK}═══
+|    ║=========={YELLOW}\///////\{BLACK}          ║    |{RED}  | || '_ \ \ / / _ \ '_ \| __/ _` | '__| |/ _ \. {BLACK}════
+|    ║          {WHITE}| _   _ |{BLACK}          ║    |{RED}  | || | | \ V /  __/ | | | || (_| | |  | | (_) | {BLACK}════
+|    ║========={WHITE}( (o) (o) ){BLACK}=========║    |{RED} |___|_| |_|\_/ \___|_| |_|\__\__,_|_|  |_|\___/  {BLACK}═══
+|    ║          {WHITE}|  . .  |{BLACK}          ║    |                                                  ══
+|    ║           {WHITE}\  _  /{BLACK}===========║    |  ═══════════════════════════════════════════════╝
+|    ║            {WHITE}\___/{BLACK}            ║    |  ══{WHITE}          1 - KIT MÈDICO! (+5HP):{RED} {pocaoCura}           {BLACK}══
+|    ╚═════════════════════════════╝    |  ══{WHITE}  2- MUNIÇÃO EXPLOSIVA (+2 Dano):{RED} {pocaoDano}           {BLACK}══
+ \_____________________________________/   ══{WHITE}           3 - Voltar                         {BLACK}══
+   |______________________________{WHITE}O{BLACK}__|     ═══════════════════════════════════════════════╝
 
-""")
+{RESET}""")
     print("\n=============================================================================")
     print("Selecione uma opção...")
     i = input()
@@ -922,7 +971,7 @@ def usarItem():
 
     elif i == "2" and pocaoDano >= 1:
         print("Você carregou a arma com munição traçante!")
-        print("""
+        print("""\n\n
        _,________
       _T _==____()
      /##(_)-'  ______
@@ -930,7 +979,7 @@ def usarItem():
     '''      /__+__/ /
              |_____|/ 
 """)
-        print("\nSerá aplicado o dano no seu próximo turno")
+        print("\n\nSerá aplicado o dano no seu próximo turno")
         input("\nPressione para continuar...")
         danoExtra = "2"
         pocaoDano = pocaoDano - 1
@@ -1015,9 +1064,14 @@ def batalhaHumano():
         if turno == "1" and inimigoVida > 0:
             os.system('cls')
             print("""
-            ===============
-            ATAQUE INIMIGO!
-            ===============""")
+>>==========================================================================<<
+||    _  _____  _    ___  _   _ _____   ___ _   _ ___ __  __ ___ ____  ___  ||
+||   / \|_   _|/ \  / _ \| | | | ____| |_ _| \ | |_ _|  \/  |_ _/ ___|/ _ \ ||
+||  / _ \ | | / _ \| | | | | | |  _|    | ||  \| || || |\/| || | |  _| | | |||
+|| / ___ \| |/ ___ \ |_| | |_| | |___   | || |\  || || |  | || | |_| | |_| |||
+||/_/   \_\_/_/   \_\__\_\ ___/|_____| |___|_| \_|___|_|  |_|___\____|\___/ ||
+>>==========================================================================<<
+""")
             input()
             turnoInimigo()
             turno = "0"
@@ -1044,7 +1098,7 @@ def batalhaHumano():
         ler_texto3()
         input()
         os.system('cls')
-        an.iniciar_animacao4()
+        an.iniciar_animacaoH()
         input()
         os.system('cls')
         print(f"""{BLACK}
@@ -1067,10 +1121,10 @@ def batalhaHumano():
                 ╠═════════════════════════════════════════════════════════════════════════════════║{RED}  ║{BLACK}
                 ║   _______________----------- __________________ ----------____________________  ║{RED}  ║{BLACK}
                 ║                             |*{WHITE}MUNIÇÃO ESPECIAL{BLACK}*|                                ║{RED}  ║{BLACK}
-                ║{RED}    _,________                                _     _{BLACK}                            ║{RED}  ║{BLACK}
-                ║{RED}   _T _==____()                             _| |_  / |{BLACK}                           ║{RED}  ║{BLACK}
-                ║{RED}   /##(_)-'   ______                       |_   _|  ||{BLACK}                           ║{RED}  ║{BLACK}
-                ║{RED}  /##/       /BALAS/|                        |_|   |__|{BLACK}                          ║{RED}  ║{BLACK}
+                ║{RED}    _,________                                {WHITE}_     _{BLACK}                            ║{RED}  ║{BLACK}
+                ║{RED}   _T _{WHITE}=={RED}____()                            {WHITE} _| |_  / |{BLACK}                           ║{RED}  ║{BLACK}
+                ║{RED}   /{WHITE}##{RED}(_)-'   ______                      {WHITE} |_   _|  ||{BLACK}                           ║{RED}  ║{BLACK}
+                ║{RED}  /{WHITE}##{RED}/       /{WHITE}BALAS{RED}/|                {WHITE}        |_|   |__|{BLACK}                          ║{RED}  ║{BLACK}
                 ║{RED}  ¯¯¯       /_____/ /{BLACK}                                                            ║{RED}  ║{BLACK}
                 ║{RED}            |_____|/{BLACK}                                                             ║{RED}  ║{BLACK}
                 ╚═════════════════════════════════════════════════════════════════════════════════╝{RED}  ║{BLACK}
@@ -1082,7 +1136,7 @@ def batalhaHumano():
         pocaoCura = pocaoCura + 2
         pocaoDano = pocaoDano + 1
 
-        input("...")
+    
         os.system('cls')
         print(F"""{RED}     
                      ╔════════════════════════════════════╗
@@ -1157,9 +1211,14 @@ def batalhaHumano():
         if turno == "1" and inimigoVida2 > 0:
             os.system('cls')
             print("""
-            ===============
-            ATAQUE INIMIGO!
-            ===============""")
+>>==========================================================================<<
+||    _  _____  _    ___  _   _ _____   ___ _   _ ___ __  __ ___ ____  ___  ||
+||   / \|_   _|/ \  / _ \| | | | ____| |_ _| \ | |_ _|  \/  |_ _/ ___|/ _ \ ||
+||  / _ \ | | / _ \| | | | | | |  _|    | ||  \| || || |\/| || | |  _| | | |||
+|| / ___ \| |/ ___ \ |_| | |_| | |___   | || |\  || || |  | || | |_| | |_| |||
+||/_/   \_\_/_/   \_\__\_\____/|_____| |___|_| \_|___|_|  |_|___\____|\___/ ||
+>>==========================================================================<<
+""")
             input()
             turnoSegundoInimigo()
             turno = "0"
@@ -1291,9 +1350,14 @@ def batalhaCapivara():
         if turno == "1" and inimigoVida > 0:
             os.system('cls')
             print("""
-            ===============
-            ATAQUE INIMIGO!
-            ===============""")
+>>==========================================================================<<
+||    _  _____  _    ___  _   _ _____   ___ _   _ ___ __  __ ___ ____  ___  ||
+||   / \|_   _|/ \  / _ \| | | | ____| |_ _| \ | |_ _|  \/  |_ _/ ___|/ _ \ ||
+||  / _ \ | | / _ \| | | | | | |  _|    | ||  \| || || |\/| || | |  _| | | |||
+|| / ___ \| |/ ___ \ |_| | |_| | |___   | || |\  || || |  | || | |_| | |_| |||
+||/_/   \_\_/_/   \_\__\_\____/|_____| |___|_| \_|___|_|  |_|___\____|\___/ ||
+>>==========================================================================<<
+""")
             input()
             turnoInimigo()
             turno = "0"
@@ -1302,12 +1366,35 @@ def batalhaCapivara():
     # JOGADOR DERROTA PRIMEIRO INIMIGO, SEGUNDO INIMIGO:
     if inimigoVida <= 0 and verificarMorto == "1":
         os.system('cls')
-        print("")
-        print("Parabéns! Você derrotou um humano!")
+        print(f"""{RED}                 
+                ╔═════════════════════════════════════════════════╗
+                ║[0]{WHITE}                   {YELLOW}   ______               {RED}[0]║
+                ║ |{WHITE}                    {YELLOW} <((((((\.\.             {RED}| ║ 
+                ║ |{WHITE}                     /      . ]\.            {RED}| ║  
+                ║ |{WHITE}                     ;_#..-/._|]             {RED}| ║
+                ║ |{WHITE}                     '##/\--'  )             {RED}| ║   
+                ║ |{WHITE}                     | '-'    |              {RED}| ║   
+                ║ |{WHITE}                     . xxxx .-|              {RED}| ║
+                ║ |{WHITE}                      \.__.'   \--._         {RED}| ║         
+                ║ |{WHITE}    [\.           __.--|       //  _/'--.    {RED}| ║ 
+                ║ |{WHITE}    \ \.\       .'-._ ('-----'/ __/      \.  {RED}| ║ 
+                ║ |{WHITE}     \ \./     /   __>|    {RED}/{WHITE} | '--.       |  {RED}| ║                 
+                ║ |{WHITE}      \ \./   /   \   |   {RED}/{WHITE}  /   /       /   {RED}| ║          
+                ║ |{WHITE}        \ '\ /     \  |  {RED}//{WHITE} |  _/       /    {RED}| ║ 
+                ║ |{WHITE}         \  \       \ |  {RED}/{WHITE}  | /        /     {RED}| ║
+                ║ |{WHITE}          \  \       \|_____|/              {RED}| ║          
+                ║[0]{WHITE}                                           {RED}[0]║                                     
+                ╚═════════════════════════════════════════════════╝ {RESET}""")
+        ler_texto5()
+        input("\nPress...")
+        os.system('cls')
+        an.iniciar_animacaoH()
+        input("Press...")
+        os.system('cls')
         print(f"""{BLACK}
-                                    /¯\ /¯\ /¯\ /¯\ /¯\ /¯\ /¯\ /¯\ /¯\ /¯\.
-                                  =|{WHITE} R   E   C   O   M   P   E   N   S   A {BLACK}|=
-                                    \_/ \_/ \_/ \_/ \_/ \_/ \_/ \_/ \_/ \_/
+                                      /¯\ /¯\ /¯\ /¯\ /¯\ /¯\ /¯\ /¯\ /¯\ /¯\.
+                                    =|{WHITE} R   E   C   O   M   P   E   N   S   A {BLACK}|=
+                                      \_/ \_/ \_/ \_/ \_/ \_/ \_/ \_/ \_/ \_/
               
                                 ╔═══════════════════════════════════════════════╗
                                 ║                                               ║{YELLOW}══╗{BLACK}
@@ -1336,30 +1423,27 @@ def batalhaCapivara():
         pocaoCura = pocaoCura + 2
         pocaoDano = pocaoDano + 1
 
-        print("")
-        input("...")
-        print("")
-        print("O humano consegue rastejar até o acampamento!")
-        input("...")
-        print("")
-        print("Ele conta sobre o acontecido e seu amigo não acredita!!")
-        input("""
-                   """)
-        print("")
-        print("Ele pega uma arma maior e vem a sua caça!")
-        input("""
-                                       """""""    
-                                       |""""""    
-                         _________     O   C""    
-                        //-------\\   /_     \    
-L______________||O-----------------\   |____/_\ / 
------------------||||| =========== /\ ____\    v|
-                  OOOO-L______________          / 
-                    --____||||___\<               
-                          ||||    (|-- |          
-                          ----
-""")
-        print("")
+        
+        input("Press...")
+        os.system('cls')
+        ler_texto6()
+        input("Press...")
+        print(f"""\n{BLACK}
+                 ╔═════════════════════════════════════════════════════╗
+                 ║                                         {YELLOW} ,,.....{BLACK}    ║
+                 ║                                           {WHITE}|{YELLOW}'''''{BLACK}    ║ 
+                 ║                            _________    {RED} ó{WHITE}   C{YELLOW}''{BLACK}    ║
+                 ║                           //--------\  {WHITE} /_     \{BLACK}    ║
+                 ║   L______________||O-----//----------\   {WHITE}|____/_\{BLACK}   ║
+                 ║   -----------------||||| =========== /\____{WHITE}\    v|{BLACK}  ║
+                 ║                    OOOO-L______________     {WHITE}     /{BLACK}  ║
+                 ║                           --____||||___\<           ║    
+                 ║                                 ||||    (|--{WHITE} |{BLACK}      ║    
+                 ║                                 ----                ║
+                 ╚═════════════════════════════════════════════════════╝   
+                    {RESET}""")
+        input("Press...")
+        
 
         verificarMorto = "0"
 
@@ -1408,9 +1492,15 @@ L______________||O-----------------\   |____/_\ /
 
         if turno == "1" and inimigoVida2 > 0:
             os.system('cls')
-            print("\n==============")
-            print("ATAQUE HUMANO!")
-            print("==============")
+            print("""
+>>==========================================================================<<
+||    _  _____  _    ___  _   _ _____   ___ _   _ ___ __  __ ___ ____  ___  ||
+||   / \|_   _|/ \  / _ \| | | | ____| |_ _| \ | |_ _|  \/  |_ _/ ___|/ _ \ ||
+||  / _ \ | | / _ \| | | | | | |  _|    | ||  \| || || |\/| || | |  _| | | |||
+|| / ___ \| |/ ___ \ |_| | |_| | |___   | || |\  || || |  | || | |_| | |_| |||
+||/_/   \_\_/_/   \_\__\_\____/|_____| |___|_| \_|___|_|  |_|___\____|\___/ ||
+>>==========================================================================<<
+""")
             input()
             turnoSegundoInimigo()
             turno = "0"
@@ -1444,32 +1534,51 @@ def startJogo():
 def vencedor():
     if personagemClasse == "2" and inimigoVida2 <= 0:
         os.system('cls')
-        print("""
-     
-        ('(               _____                _ 
-          \ \            |  __ \              | |       // 
-       d@b | |           | |__) |_ _ _ __ __ _| |__   ___ _ __  ___
-       @@@@' |           |  ___/ _` | '__/ _` | '_ \ / _ \ '_ \/ __|
-   ('(  Y@P   `--..      | |  | (_| | | | (_| | |_) |  __/ | | \__ *
-    \ `--'      .' `.    |_|   \__,_|_|  \__,_|_.__/ \___|_| |_|___/
-     `---....__/    |                 
-        |      /   . \                                 
-        |     /  .'\  \      /\_/.  --->VOCÊ DERROTOU OS HUMANOS!!!!!
-        |     \  \  \  \    ( `.< ) 
-    -SOCORRO-  \  \  \__\    \ w / `~+++,,_______
-               _`--` `--'     \./ ............../
-              `---'              \ ............./    
-                                    HH        HH
-                                    WW        WW
-         
-          """)
-        input()
-        quit()
+        an.iniciar_animacao4()
+        print(F"""{BLUE}
+                         _____                _ 
+                        |  __ \              | |       // 
+                        | |__) |_ _ _ __ __ _| |__   ___ _ __  ___
+                        |  ___/ _` | '__/ _` | '_ \ / _ \ '_ \/ __|
+                        | |  | (_| | | | (_| | |_) |  __/ | | \__ *
+                        |_|   \__,_|_|  \__,_|_.__/ \___|_| |_|___/
+              
+                        {WHITE}VOCÊ DERROTOU OS HUMANOS!
+                                                  {BLACK}POR ENQUANTO....
+ """)
+        apanhar_novamente = input("""
+                                      DESEJA JOGAR NOVAMENTE?
+                                      1 - SIM        2 - NÃO
+                                                """)
+        if apanhar_novamente =="1":
+                resetGame()
+                startJogo()
+        else:
+                quit()
+        
     if personagemClasse == "1" and inimigoVida2 <= 0:
         os.system('cls')
         an.iniciar_animacao4()
-        input("Enter para sair")
-        quit()
+        print(F"""{BLUE}
+                         _____                _ 
+                        |  __ \              | |       // 
+                        | |__) |_ _ _ __ __ _| |__   ___ _ __  ___
+                        |  ___/ _` | '__/ _` | '_ \ / _ \ '_ \/ __|
+                        | |  | (_| | | | (_| | |_) |  __/ | | \__ *
+                        |_|   \__,_|_|  \__,_|_.__/ \___|_| |_|___/
+              
+                        {WHITE}VOCÊ DERROTOU AS CAPIVARAS!
+                                                          {BLACK}POR ENQUANTO....
+ """)
+        apanhar_novamente = input("""
+                                      DESEJA JOGAR NOVAMENTE?
+                                      1 - SIM        2 - NÃO
+                                                """)
+        if apanhar_novamente =="1":
+                resetGame()
+                startJogo()
+        else:
+                quit()
 
 # MAIN():       
 menu()
